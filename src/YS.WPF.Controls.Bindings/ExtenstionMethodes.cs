@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Data;
 
-namespace YS.WPF.Controls.Input.Bindings
+namespace YS.WPF.Controls.Bindings
 {
     public static class ExtenstionMethodes
     {

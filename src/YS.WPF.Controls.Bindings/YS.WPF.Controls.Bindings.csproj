@@ -5,8 +5,4 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\YS.WPF.Controls.Bindings\YS.WPF.Controls.Bindings.csproj" />
-  </ItemGroup>
-
 </Project>

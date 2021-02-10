@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace YS.WPF.Controls.Input.Bindings
+namespace YS.WPF.Controls.Bindings
 {
     public class TextBoxBinding : ControlBinding
     {

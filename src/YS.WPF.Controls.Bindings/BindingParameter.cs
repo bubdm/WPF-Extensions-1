@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace YS.WPF.Controls.Input.Bindings
+namespace YS.WPF.Controls.Bindings
 {
     public class BindingParameter
     {

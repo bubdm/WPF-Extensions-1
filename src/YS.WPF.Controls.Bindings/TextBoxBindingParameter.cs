@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Controls;
 
-namespace YS.WPF.Controls.Input.Bindings
+namespace YS.WPF.Controls.Bindings
 {
     public class TextBoxBindingParameter : BindingParameter
     {

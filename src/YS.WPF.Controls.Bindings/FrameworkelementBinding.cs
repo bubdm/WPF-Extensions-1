@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-using System.Windows;
-using System.Windows.Data;
-using YS.WPF.Controls.Input.NotifyPropertyChanged;
+﻿using System.Windows;
+using YS.WPF.Controls.Bindings.NotifyPropertyChanged;
 
-namespace YS.WPF.Controls.Input.Bindings
+namespace YS.WPF.Controls.Bindings
 {
     public class FrameworkelementBinding : ObservableObject, IBindableObject
     {

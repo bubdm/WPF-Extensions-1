@@ -16,7 +16,7 @@ namespace YS.WPF.Controls.Bindings
             set => Set(value, ref _visibility);
         }
 
-        private bool _isEnabled;
+        private bool _isEnabled = true;
 
         public bool IsEnabled
         {

@@ -35,6 +35,7 @@ namespace YS.WPF.Controls.Bindings
         public override void BindProperties(DependencyObject dependencyObject)
         {            
             base.BindProperties(dependencyObject);
+            
             this.Bind(Control.ForegroundProperty, dependencyObject, nameof(Foreground), BindingParameters);
             this.Bind(Control.BackgroundProperty, dependencyObject, nameof(Background), BindingParameters);
         }

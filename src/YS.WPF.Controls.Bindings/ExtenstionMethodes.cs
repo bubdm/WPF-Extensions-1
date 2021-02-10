@@ -13,13 +13,18 @@ namespace YS.WPF.Controls.Bindings
         {
             var propInfo = bindableObject.GetType().GetProperty(propertyName);
             var dpProp = depo.GetValue(dp);
-            try
+            var defaultValue = dp.GetMetadata(depo).DefaultValue;
+
+            if(dpProp != defaultValue)
             {
-                propInfo.SetValue(bindableObject, dpProp);
+                try
+                {
+                    propInfo.SetValue(bindableObject, dpProp);
+                }
+                catch (Exception ex){  }
             }
-            catch (Exception ex)
-            {
-            }
+
+            
             var binding = new Binding(propertyName)
             { 
                 Source = bindableObject,

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace YS.WPF.Controls.Bindings
@@ -43,15 +44,26 @@ namespace YS.WPF.Controls.Bindings
             set => Set(value, ref _value);
         }
 
-        public TextBoxBinding(TextBoxBindingParameter bindingParameters)
-            : base(bindingParameters)
+        public TextBoxBinding(BindingParameter bindingParameter)
+            : base(bindingParameter)
         {
         }
 
         public override void BindProperties(DependencyObject dependencyObject)
         {
             base.BindProperties(dependencyObject);
-            this.Bind(TextBox.TextProperty, dependencyObject, nameof(Value), BindingParameters);
+            Bind(TextBox.TextProperty, dependencyObject, nameof(Value), BindingParameters);
+        }
+
+        public void AddValidationRule(ValidationRule validationRule) 
+            => Binding.ValidationRules.Add(validationRule);
+
+        public void AddValidationRule(IEnumerable<ValidationRule> validationRules)
+        {
+            foreach (var validationRule in validationRules)
+            {
+                Binding.ValidationRules.Add(validationRule);
+            }
         }
     }
 }

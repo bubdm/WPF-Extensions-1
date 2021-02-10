@@ -36,8 +36,8 @@ namespace YS.WPF.Controls.Bindings
         {            
             base.BindProperties(dependencyObject);
             
-            this.Bind(Control.ForegroundProperty, dependencyObject, nameof(Foreground), BindingParameters);
-            this.Bind(Control.BackgroundProperty, dependencyObject, nameof(Background), BindingParameters);
+            Bind(Control.ForegroundProperty, dependencyObject, nameof(Foreground), BindingParameters);
+            Bind(Control.BackgroundProperty, dependencyObject, nameof(Background), BindingParameters);
         }
     }
 }

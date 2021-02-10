@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YS.WPF.Controls.Input", "YS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YS.WPF.Controls.Bindings", "YS.WPF.Controls.Bindings\YS.WPF.Controls.Bindings.csproj", "{75033268-C7A5-4547-B83F-1517FD83035D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YS.WPF.Controls.Playground", "..\playground\YS.WPF.Controls.Playground\YS.WPF.Controls.Playground.csproj", "{4BC11A82-FC02-416A-957C-DF9172594D4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{75033268-C7A5-4547-B83F-1517FD83035D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75033268-C7A5-4547-B83F-1517FD83035D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75033268-C7A5-4547-B83F-1517FD83035D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BC11A82-FC02-416A-957C-DF9172594D4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BC11A82-FC02-416A-957C-DF9172594D4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BC11A82-FC02-416A-957C-DF9172594D4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BC11A82-FC02-416A-957C-DF9172594D4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

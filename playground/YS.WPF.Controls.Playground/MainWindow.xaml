@@ -6,11 +6,22 @@
         xmlns:local="clr-namespace:YS.WPF.Controls.Playground"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=local:ViewModel, IsDesignTimeCreatable=True}"
-        xmlns:ys="clr-namespace:YS.WPF.Controls.Bindings;assembly=YS.WPF.Controls.Bindings"
+        xmlns:ys="YS.WPF.Controls"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
         <TextBox ys:BindingManager.Binding ="{Binding TextBoxBinding}"
                  Text="Hallo Welt"
-                 Margin="10"/>
+                 Margin="10">
+            <TextBox.Style>
+                <Style TargetType="{x:Type TextBox}">
+                    <Style.Triggers>
+                        <Trigger Property="Validation.HasError" Value="true">
+                            <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                                Path=(Validation.Errors)/ErrorContent}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
     </StackPanel>
 </Window>

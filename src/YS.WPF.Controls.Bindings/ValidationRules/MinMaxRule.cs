@@ -21,21 +21,21 @@ namespace YS.WPF.Controls.Input.ValidationRules
 
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            var age = 0;
+            var number = 0;
 
             try
             {
                 if (((string)value).Length > 0)
-                    age = int.Parse((string)value);
+                    number = int.Parse((string)value);
             }
             catch (Exception e)
             {
                 return new ValidationResult(false, $"Illegal characters or {e.Message}");
             }
 
-            return age < Min || (age > Max)
+            return number < Min || (number > Max)
                 ? new ValidationResult(false,
-                  $"Please enter an age in the range: {Min}-{Max}.")
+                  $"Please enter an number in the range: {Min}-{Max}.")
                 : ValidationResult.ValidResult;
         }
     }

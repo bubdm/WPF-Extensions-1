@@ -10,15 +10,6 @@ using System.Windows.Markup;
 // werden und wie dieser Prozess angepasst werden kann, finden Sie unter https://aka.ms/assembly-info-properties.
 
 
-// Wenn "ComVisible" auf FALSE festgelegt wird, sind die Typen in dieser Assembly
-// für COM-Komponenten nicht sichtbar. Wenn Sie von COM aus auf einen Typ in dieser
-// Assembly zugreifen müssen, legen Sie das ComVisible-Attribut für den betreffenden
-// Typ auf TRUE fest.
 
-[assembly: ComVisible(false)]
-[assembly: XmlnsDefinition("YS.WPF.Controls", "YS.WPF.Controls.Input")]
+[assembly: XmlnsDefinition("YS.WPF.Controls", "YS.WPF.Controls.Bindings")]
 
-// Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM
-// bereitgestellt wird.
-
-[assembly: Guid("6486aa63-e47b-497a-be1a-9ebe842dc65c")]

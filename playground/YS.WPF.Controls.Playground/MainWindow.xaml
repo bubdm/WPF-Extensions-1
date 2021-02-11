@@ -1,0 +1,27 @@
+﻿<Window x:Class="YS.WPF.Controls.Playground.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YS.WPF.Controls.Playground"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=local:ViewModel, IsDesignTimeCreatable=True}"
+        xmlns:ys="YS.WPF.Controls"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+
+        <ys:YsTextBox Margin="10"
+                      Label="Test:"
+                      LabelPadding="0"
+                      Padding="5"
+                      MinWidth="200"
+                      MaxLength="3"
+                      Foreground="Black"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      ys:BindingManager.Binding="{Binding TextBoxBinding}"
+                      AssistenTextFontSize="11"
+                      AssistentText="Hallo Welt"
+                      AssistenTextPadding="5"/>
+    </Grid>
+</Window>

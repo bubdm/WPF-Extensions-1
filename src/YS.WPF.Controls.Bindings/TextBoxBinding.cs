@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Runtime.InteropServices;
+using System.Globalization;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -10,7 +12,7 @@ namespace YS.WPF.Controls.Bindings
 {
     public class TextBoxBinding : ControlBinding
     {
-
+        protected Binding _textBinding;
         protected DependencyObject DependencyObject;
 
         private string _text;
@@ -31,24 +33,22 @@ namespace YS.WPF.Controls.Bindings
 
         public override void BindProperties(DependencyObject dependencyObject)
         {
+            if (dependencyObject is not TextBox)
+                throw new ArgumentException($"The UI-Element musst be an {typeof(TextBox).FullName}");
+
             DependencyObject = dependencyObject;
             base.BindProperties(dependencyObject);
-            Bind(TextBox.TextProperty, dependencyObject, nameof(Text), BindingParameters);
+            _textBinding = Bind(TextBox.TextProperty, dependencyObject, nameof(Text), BindingParameter);
         }
     }
 
 
-    public class TextBoxBinding<T> : ControlBinding
+    public class TextBoxBinding<T> : TextBoxBinding
+        where T : IConvertible
     {
         private readonly ObservableCollection<ValidationRule> _rules;
-        
-        private T _value;
 
-        public T Value 
-        {
-            get => _value;
-            set => Set(value, ref _value);
-        }
+        public T InputValue => HasValidationError || string.IsNullOrEmpty(Text) ? default : (T)Convert.ChangeType(Text, typeof(T));
 
 
         public TextBoxBinding(BindingParameter bindingParameter)
@@ -57,36 +57,35 @@ namespace YS.WPF.Controls.Bindings
             _rules = new ObservableCollection<ValidationRule>();
         }
 
+
+        private bool _hasValidationError;
+
+        public bool HasValidationError
+        {
+            get => _hasValidationError;
+            set => Set(value, ref _hasValidationError);
+        }
+
+
         public override void BindProperties(DependencyObject dependencyObject)
         {
+            
             base.BindProperties(dependencyObject);
-            Bind(TextBox.TextProperty, dependencyObject, nameof(Value), BindingParameters);
 
+            BindingParameter.ValidatesOnDataErrors = true;
+            BindingParameter.NotifyOnValidationError = true;
+
+
+            Validation.AddErrorHandler(dependencyObject, (s, e) 
+                => HasValidationError = e.Action == ValidationErrorEventAction.Added);
+
+            
 
             foreach (var rule in _rules)
             {
-                Binding.ValidationRules.Add(rule);
+                _textBinding.ValidationRules.Add(rule);
             }
-
-            _rules.CollectionChanged += (s, e) =>
-            {
-                if(e.Action == NotifyCollectionChangedAction.Add)
-                {
-                    foreach (ValidationRule item in e.NewItems)
-                    {
-                        Binding.ValidationRules.Add(item);
-                    }
-                }
-                
-
-                if(e.Action == NotifyCollectionChangedAction.Remove )
-                {
-                    foreach (ValidationRule item in e.OldItems)
-                    {
-                        Binding.ValidationRules.Remove(item);
-                    }
-                }
-            };
+            _rules.CollectionChanged += OnRulesChanged;
 
         }
 
@@ -95,10 +94,29 @@ namespace YS.WPF.Controls.Bindings
 
         public void AddValidationRule(IEnumerable<ValidationRule> validationRules)
         {
-            BindingParameters.NotifyOnValidationError = true;
+            BindingParameter.ValidatesOnNotifyDataErrors = true;
             foreach (var rule in validationRules)
             {
                 _rules.Add(rule);
+            }
+        }
+
+        private void OnRulesChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                foreach (ValidationRule rule in e.NewItems)
+                {
+                    _textBinding.ValidationRules.Add(rule);
+                }
+            }
+
+            if (e.Action == NotifyCollectionChangedAction.Remove)
+            {
+                foreach (ValidationRule rule in e.OldItems)
+                {
+                    _textBinding.ValidationRules.Remove(rule);
+                }
             }
         }
     }

@@ -16,7 +16,9 @@ namespace YS.WPF.Controls.Bindings
 
         public bool NotifyOnValidationError { get; set; }
 
-        public bool NotifyOnDataErrors { get;  set; }
+        public bool ValidatesOnNotifyDataErrors { get;  set; }
+
+        public bool ValidatesOnDataErrors { get; set; }
 
         public BindingParameter()
         {

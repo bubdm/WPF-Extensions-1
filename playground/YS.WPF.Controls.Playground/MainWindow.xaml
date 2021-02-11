@@ -8,20 +8,20 @@
         d:DataContext="{d:DesignInstance Type=local:ViewModel, IsDesignTimeCreatable=True}"
         xmlns:ys="YS.WPF.Controls"
         Title="MainWindow" Height="450" Width="800">
-    <StackPanel>
-        <TextBox ys:BindingManager.Binding ="{Binding TextBoxBinding}"
-                 Text="Hallo Welt"
-                 Margin="10">
-            <TextBox.Style>
-                <Style TargetType="{x:Type TextBox}">
-                    <Style.Triggers>
-                        <Trigger Property="Validation.HasError" Value="true">
-                            <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self},
-                                Path=(Validation.Errors)/ErrorContent}"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBox.Style>
-        </TextBox>
-    </StackPanel>
+    <Grid>
+
+        <ys:YsTextBox Margin="10"
+                      Label="Test:"
+                      LabelPadding="0"
+                      Padding="5"
+                      MinWidth="200"
+                      MaxLength="3"
+                      Foreground="Black"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      ys:BindingManager.Binding="{Binding TextBoxBinding}"
+                      AssistenTextFontSize="11"
+                      AssistentText="Hallo Welt"
+                      AssistenTextPadding="5"/>
+    </Grid>
 </Window>

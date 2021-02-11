@@ -30,7 +30,7 @@ namespace YS.WPF.Controls.Input
 
         // Using a DependencyProperty as the backing store for LabelFontSize.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LabelFontSizeProperty =
-            DependencyProperty.Register("LabelFontSize", typeof(double), typeof(YsTextBox), new PropertyMetadata(10d));
+            DependencyProperty.Register("LabelFontSize", typeof(double), typeof(YsTextBox), new PropertyMetadata(16d));
 
 
 
@@ -86,6 +86,62 @@ namespace YS.WPF.Controls.Input
 
         #endregion
 
+        #region AssistentText
+
+
+
+        public string AssistentText
+        {
+            get => (string)GetValue(AssistentTextProperty);
+            set => SetValue(AssistentTextProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for AssistentText.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty AssistentTextProperty =
+            DependencyProperty.Register("AssistentText", typeof(string), typeof(YsTextBox), new PropertyMetadata(""));
+
+
+
+        public Thickness AssistenTextPadding
+        {
+            get => (Thickness)GetValue(AssistenTextPaddingProperty);
+            set => SetValue(AssistenTextPaddingProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for AssistenTextPadding.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty AssistenTextPaddingProperty =
+            DependencyProperty.Register("AssistenTextPadding", typeof(Thickness), typeof(YsTextBox), new PropertyMetadata(new Thickness(0)));
+
+
+
+        public double AssistenTextFontSize
+        {
+            get => (double)GetValue(AssistenTextFontSizeProperty);
+            set => SetValue(AssistenTextFontSizeProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for AssistenTextFontSize.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty AssistenTextFontSizeProperty =
+            DependencyProperty.Register("AssistenTextFontSize", typeof(double), typeof(YsTextBox), new PropertyMetadata(12d));
+
+
+
+
+
+        public Brush AssistenTextForeground
+        {
+            get => (Brush)GetValue(AssistenTextForegroundProperty);
+            set => SetValue(AssistenTextForegroundProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for AssistenTextForeground.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty AssistenTextForegroundProperty =
+            DependencyProperty.Register("AssistenTextForeground", typeof(Brush), typeof(YsTextBox), new PropertyMetadata(new SolidColorBrush(Colors.Gray)));
+
+
+
+        #endregion
+
 
         public CornerRadius CornerRadius
         {
@@ -97,15 +153,25 @@ namespace YS.WPF.Controls.Input
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(YsTextBox), new PropertyMetadata(new CornerRadius(0)));
 
-       #endregion
+
+
+
+        public Brush HoverColor
+        {
+            get => (Brush)GetValue(HoverColorProperty);
+            set => SetValue(HoverColorProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for HoverColor.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HoverColorProperty =
+            DependencyProperty.Register("HoverColor", typeof(Brush), typeof(YsTextBox), new PropertyMetadata(new SolidColorBrush(Colors.LightBlue)));
+
+
+        #endregion
 
         static YsTextBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(YsTextBox), new FrameworkPropertyMetadata(typeof(YsTextBox)));
-        }
-        public YsTextBox()
-        {
-            
         }
     }
 }

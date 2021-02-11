@@ -8,9 +8,7 @@ namespace YS.WPF.Controls.Bindings
     public class FrameworkelementBinding : ObservableObject
     {
 
-        protected Binding Binding;
-
-        public BindingParameter BindingParameters { get; private set; }
+        public BindingParameter BindingParameter { get; private set; }
 
         private Visibility _visibility;
 
@@ -32,18 +30,21 @@ namespace YS.WPF.Controls.Bindings
 
         public FrameworkelementBinding(BindingParameter bindingParameters)
         {
-            BindingParameters = bindingParameters;
+            BindingParameter = bindingParameters;
         }
 
 
         public virtual void BindProperties(DependencyObject dependencyObject)
         {
-            Bind(UIElement.VisibilityProperty, dependencyObject, nameof(Visibility), BindingParameters);
-            Bind(UIElement.IsEnabledProperty, dependencyObject, nameof(IsEnabled), BindingParameters);
+            if (dependencyObject is not FrameworkElement)
+                throw new ArgumentException($"The UI-Element musst be an {typeof(FrameworkElement)}");
+
+            Bind(UIElement.VisibilityProperty, dependencyObject, nameof(Visibility), BindingParameter);
+            Bind(UIElement.IsEnabledProperty, dependencyObject, nameof(IsEnabled), BindingParameter);
         }
 
 
-        protected void Bind(DependencyProperty dependencyProperty, DependencyObject dependencyObject, string propertyName, 
+        protected Binding Bind(DependencyProperty dependencyProperty, DependencyObject dependencyObject, string propertyName, 
             BindingParameter bindingParameter)
         {
             var propInfo = GetType().GetProperty(propertyName);
@@ -67,11 +68,13 @@ namespace YS.WPF.Controls.Bindings
                 NotifyOnSourceUpdated = bindingParameter.NotifyOnSourceUpdated,
                 NotifyOnTargetUpdated = bindingParameter.NotifyOnTargetUpdated,
                 NotifyOnValidationError = bindingParameter.NotifyOnValidationError,
-                ValidatesOnNotifyDataErrors = bindingParameter.NotifyOnDataErrors
+                ValidatesOnNotifyDataErrors = bindingParameter.ValidatesOnNotifyDataErrors,
+                ValidatesOnDataErrors = bindingParameter.ValidatesOnDataErrors,
+                Mode = bindingParameter.Mode
             };
 
             BindingOperations.SetBinding(dependencyObject, dependencyProperty, binding);
-            Binding = binding;
+            return binding;
         }
 
     }

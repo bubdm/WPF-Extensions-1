@@ -38,7 +38,7 @@ namespace YS.WPF.Controls.Bindings
 
             DependencyObject = dependencyObject;
             base.BindProperties(dependencyObject);
-            _textBinding = Bind(TextBox.TextProperty, dependencyObject, nameof(Text), BindingParameter);
+            _textBinding = Bind(TextBox.TextProperty, dependencyObject, nameof(Text));
         }
     }
 

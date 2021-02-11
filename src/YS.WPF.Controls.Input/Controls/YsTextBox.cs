@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using YS.WPF.Controls.Input.Bindings;
 
 namespace YS.WPF.Controls.Input
 {
-    
+
     public class YsTextBox : TextBox
     {
 
@@ -107,32 +97,7 @@ namespace YS.WPF.Controls.Input
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(YsTextBox), new PropertyMetadata(new CornerRadius(0)));
 
-
-
-        public FrameworkelementBinding FrameworkelementBinding
-        {
-            get => (FrameworkelementBinding)GetValue(FrameworkelementBindingProperty);
-            set => SetValue(FrameworkelementBindingProperty, value);
-        }
-
-        // Using a DependencyProperty as the backing store for FrameworkelementBinding.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty FrameworkelementBindingProperty =
-            DependencyProperty.Register("FrameworkelementBinding", typeof(FrameworkelementBinding), typeof(YsTextBox), 
-                new FrameworkPropertyMetadata(null, OnBindingChanged));
-
-        private static void OnBindingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var binding = (FrameworkelementBinding)e.NewValue;
-
-            binding.BindProperties((FrameworkElement)d);
-        }
-
-
-
-
-
-
-        #endregion
+       #endregion
 
         static YsTextBox()
         {

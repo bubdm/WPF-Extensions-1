@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace YS.WPF.Controls.Input.Bindings
+namespace YS.WPF.Controls.Bindings
 {
     public class ControlBinding : FrameworkelementBinding
     {
@@ -35,8 +35,9 @@ namespace YS.WPF.Controls.Input.Bindings
         public override void BindProperties(DependencyObject dependencyObject)
         {            
             base.BindProperties(dependencyObject);
-            this.Bind(Control.ForegroundProperty, dependencyObject, nameof(Foreground), BindingParameters);
-            this.Bind(Control.BackgroundProperty, dependencyObject, nameof(Background), BindingParameters);
+            
+            Bind(Control.ForegroundProperty, dependencyObject, nameof(Foreground), BindingParameters);
+            Bind(Control.BackgroundProperty, dependencyObject, nameof(Background), BindingParameters);
         }
     }
 }

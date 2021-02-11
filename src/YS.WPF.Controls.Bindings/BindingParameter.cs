@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace YS.WPF.Controls.Input.Bindings
+namespace YS.WPF.Controls.Bindings
 {
     public class BindingParameter
     {
@@ -15,6 +15,7 @@ namespace YS.WPF.Controls.Input.Bindings
         public bool NotifyOnTargetUpdated { get; set; }
 
         public bool NotifyOnValidationError { get; set; }
+        public bool NotifyOnDataErrors { get; set set; }
 
         public BindingParameter()
         {

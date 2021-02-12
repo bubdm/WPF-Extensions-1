@@ -11,7 +11,7 @@ namespace YS.WPF.Controls.Bindings
     public class BindingManager : DependencyObject
     {
         public static readonly DependencyProperty BindingProperty = DependencyProperty.RegisterAttached("Binding",
-            typeof(FrameworkelementBinding), typeof(BindingManager), new FrameworkPropertyMetadata(null, OnBindingChanged));
+            typeof(FrameworkelementBinding), typeof(BindingManager), new PropertyMetadata(null, OnBindingChanged));
 
         public static FrameworkelementBinding GetBinding(DependencyObject dobj) 
             => (FrameworkelementBinding)dobj.GetValue(BindingProperty);

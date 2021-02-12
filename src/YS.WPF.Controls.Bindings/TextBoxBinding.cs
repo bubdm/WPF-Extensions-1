@@ -38,7 +38,7 @@ namespace YS.WPF.Controls.Bindings
 
             DependencyObject = dependencyObject;
             base.BindProperties(dependencyObject);
-            _textBinding = Bind(TextBox.TextProperty, dependencyObject, nameof(Text), BindingParameter);
+            _textBinding = Bind(TextBox.TextProperty, dependencyObject, nameof(Text));
         }
     }
 
@@ -79,14 +79,14 @@ namespace YS.WPF.Controls.Bindings
             Validation.AddErrorHandler(dependencyObject, (s, e) 
                 => HasValidationError = e.Action == ValidationErrorEventAction.Added);
 
-            
-
             foreach (var rule in _rules)
             {
                 _textBinding.ValidationRules.Add(rule);
             }
             _rules.CollectionChanged += OnRulesChanged;
 
+            var experssion = ((TextBox)dependencyObject).GetBindingExpression(TextBox.TextProperty);
+            experssion.UpdateSource();
         }
 
         public void AddValidationRule(ValidationRule validationRule) 

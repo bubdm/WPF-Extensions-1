@@ -3,12 +3,17 @@
 This WPF Extensions are a collection of some useful controls and other features.
 Fell free to contribute by adding new features, fixing bugs, writing documentations or just open an issue for a bug or add a feature idea.
 
-
 # Implemented Features
 
-## YsTextBox 
 
-The YsTextBox is an Extension of the normal Textbox. It contains a Watermark a Label and some Properties to simplify the styling of the TexBox.
+
+## AdvancedTextBox 
+
+The AdvancedTextBox is an Extension of the normal Textbox. It contains a Watermark a Label and some Properties to simplify the styling of the TextBox.
+
+
+
+
 
 ## Control Bindings
 
@@ -21,7 +26,7 @@ Supported Controls are:
 - ItemsControl
 - Selector
 - TextBox
-- YsTextBox
+- AdvancedTextBox
 
 
 
@@ -30,9 +35,12 @@ Supported Controls are:
 ## Controls
 
 - MaskedTextBox
-- YsComboBox
-- YsPasswordBox
+- AdvancedComboBox
+- AdvancedPasswordBox
 - ColorPicker
+- ColorSelector
+- StackableCheckBox
+- AdvancedTreeView
 - Slider
 - DatePicker
 - TimePicker
@@ -41,5 +49,5 @@ Supported Controls are:
 ## Dokumentation
 
 - GithubWiki
-- Sample browser with all controls
+- Sample Gallery with all controls
 

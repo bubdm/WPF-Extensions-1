@@ -37,7 +37,7 @@ namespace YS.WPF.Controls.Bindings
         public virtual void BindProperties(DependencyObject dependencyObject)
         {
             if (dependencyObject is not FrameworkElement)
-                throw new ArgumentException($"The UI-Element musst be an {typeof(FrameworkElement)}");
+                throw new ArgumentException($"The UI-Element must be an {typeof(FrameworkElement)}");
 
             Bind(UIElement.VisibilityProperty, dependencyObject, nameof(Visibility));
             Bind(UIElement.IsEnabledProperty, dependencyObject, nameof(IsEnabled));
@@ -49,6 +49,10 @@ namespace YS.WPF.Controls.Bindings
             var propInfo = GetType().GetProperty(propertyName);
             var dpProp = dependencyObject.GetValue(dependencyProperty);
             var defaultValue = dependencyProperty.GetMetadata(dependencyObject).DefaultValue;
+            var val = propInfo.GetValue(this);
+            if (val == null && defaultValue != null)
+                propInfo.SetValue(this, dpProp);
+
 
             if (dpProp != defaultValue)
             {

@@ -34,7 +34,7 @@ namespace YS.WPF.Controls.Bindings
         public override void BindProperties(DependencyObject dependencyObject)
         {
             if (dependencyObject is not TextBox)
-                throw new ArgumentException($"The UI-Element musst be an {typeof(TextBox).FullName}");
+                throw new ArgumentException($"The UI-Element must be an {typeof(TextBox).FullName}");
 
             DependencyObject = dependencyObject;
             base.BindProperties(dependencyObject);

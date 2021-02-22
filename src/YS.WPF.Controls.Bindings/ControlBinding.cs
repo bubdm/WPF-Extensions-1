@@ -35,7 +35,7 @@ namespace YS.WPF.Controls.Bindings
         public override void BindProperties(DependencyObject dependencyObject)
         {
             if (dependencyObject is not Control)
-                throw new ArgumentException($"The UI-Element musst be an {typeof(Control)}");
+                throw new ArgumentException($"The UI-Element must be an {typeof(Control)}");
 
             base.BindProperties(dependencyObject);
 

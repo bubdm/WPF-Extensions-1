@@ -19,7 +19,7 @@ namespace YS.WPF.Controls.Bindings.ValidationRules
         {
 
             if (value is not null and not string)
-                return new ValidationResult(false, "Input musst be a string");
+                return new ValidationResult(false, "Input must be a string");
 
             var input = (string)value;
 
@@ -27,7 +27,7 @@ namespace YS.WPF.Controls.Bindings.ValidationRules
                 return ValidationResult.ValidResult;
 
             if (!double.TryParse(input, out var number))
-                return new ValidationResult(false, "Input musst be a number");
+                return new ValidationResult(false, "Input must be a number");
 
             if (number < _min || number > _max)
                 return new ValidationResult(false, $"Number must be in a range of {_min}-{_max}");

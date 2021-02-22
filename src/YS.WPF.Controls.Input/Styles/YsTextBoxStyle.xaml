@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:YS.WPF.Controls.Input">
 
-    <Style TargetType="{x:Type local:YsTextBox}">
+    <Style TargetType="{x:Type local:AdvancedTextBox}">
         <Setter Property="FontSize" Value="16" />
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -12,9 +12,9 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:YsTextBox}">
+                <ControlTemplate TargetType="{x:Type local:AdvancedTextBox}">
                     <StackPanel>
-                        
+
                         <!-- Label -->
                         <TextBlock x:Name="Label"
                                    Grid.Row="0"
@@ -27,7 +27,7 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="{TemplateBinding  CornerRadius}">
-                            
+
                             <Grid >
                                 <!-- TextInput -->
                                 <ScrollViewer x:Name="PART_ContentHost" 
@@ -40,6 +40,12 @@
                                               Margin="0"
                                               Height="{TemplateBinding Height}"
                                               FontSize="{TemplateBinding FontSize}"/>
+                                <!-- Popup -->
+                                <Popup x:Name="Popup"
+                                    Placement="Bottom"
+                                    Width="{TemplateBinding Width}">
+                                    <ListBox x:Name="ListBox"/>
+                                </Popup>
 
                                 <!-- Watermark -->
                                 <TextBlock x:Name="Watermark"
@@ -54,14 +60,14 @@
                                            FontSize="{TemplateBinding FontSize}"/>
                             </Grid>
                         </Border>
-                        <!-- Assistent text -->
+                        <!-- Assistant text -->
                         <TextBlock x:Name="AssistentText"
                                    Text="{TemplateBinding AssistentText}"
                                    FontSize="{TemplateBinding AssistenTextFontSize}"
                                    Foreground="{TemplateBinding AssistenTextForeground}"
                                    Padding="{TemplateBinding AssistenTextPadding}"
                                    TextWrapping="WrapWithOverflow"/>
-                        
+
                     </StackPanel>
 
                     <ControlTemplate.Triggers>
@@ -69,7 +75,7 @@
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Label}" Value="">
                             <Setter Property="Visibility" Value="Collapsed" TargetName="Label" />
                         </DataTrigger>
-                        
+
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Text}" Value="">
                             <Setter Property="Visibility" Value="Visible" TargetName="Watermark" />
                         </DataTrigger>
@@ -110,7 +116,7 @@
                         </Trigger>
 
                     </ControlTemplate.Triggers>
-                    
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

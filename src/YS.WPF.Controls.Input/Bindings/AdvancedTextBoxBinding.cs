@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ using YS.WPF.Controls.Input;
 
 namespace YS.WPF.Controls.Bindings
 {
-    public class YsTextBoxBinding : TextBoxBinding
+    public class AdvancedTextBoxBinding : TextBoxBinding
     {
 
         private string _watermark;
@@ -53,8 +54,26 @@ namespace YS.WPF.Controls.Bindings
             set => Set(value, ref _assistentTextForeground);
         }
 
+        private IEnumerable _suggestions;
 
-        public YsTextBoxBinding(BindingParameter bindingParameter)
+        public IEnumerable Suggestions
+        {
+            get => _suggestions;
+            set => Set(value, ref _suggestions);
+        }
+
+
+        private object _selectedItem;
+
+        public object SelectedItem
+        {
+            get => _selectedItem;
+            set => Set(value, ref _selectedItem);
+        }
+
+
+
+        public AdvancedTextBoxBinding(BindingParameter bindingParameter)
             :base(bindingParameter)
         {
 
@@ -62,16 +81,18 @@ namespace YS.WPF.Controls.Bindings
 
         public override void BindProperties(DependencyObject dependencyObject)
         {
-            if (dependencyObject is not YsTextBox)
-                throw new ArgumentException($"UI-Element must be an {typeof(YsTextBox).FullName}");
+            if (dependencyObject is not AdvancedTextBox)
+                throw new ArgumentException($"UI-Element must be an {typeof(AdvancedTextBox).FullName}");
 
             base.BindProperties(dependencyObject);
 
-            Bind(YsTextBox.WatermarkProperty, dependencyObject, nameof(Watermark));
-            Bind(YsTextBox.LabelProperty, dependencyObject, nameof(Label));
-            Bind(YsTextBox.LabelForegorundProperty, dependencyObject, nameof(LabelForeground));
-            Bind(YsTextBox.AssistentTextProperty, dependencyObject, nameof(AssistentText));
-            Bind(YsTextBox.AssistenTextForegroundProperty, dependencyObject, nameof(AssistentTextForeground));
+            Bind(AdvancedTextBox.WatermarkProperty, dependencyObject, nameof(Watermark));
+            Bind(AdvancedTextBox.LabelProperty, dependencyObject, nameof(Label));
+            Bind(AdvancedTextBox.LabelForegorundProperty, dependencyObject, nameof(LabelForeground));
+            Bind(AdvancedTextBox.AssistentTextProperty, dependencyObject, nameof(AssistentText));
+            Bind(AdvancedTextBox.AssistenTextForegroundProperty, dependencyObject, nameof(AssistentTextForeground));
+            Bind(AdvancedTextBox.SuggestionsProperty, dependencyObject, nameof(Suggestions));
+            Bind(AdvancedTextBox.SelectedItemProperty, dependencyObject, nameof(SelectedItem));
 
         }
     }
@@ -129,16 +150,16 @@ namespace YS.WPF.Controls.Bindings
 
         public override void BindProperties(DependencyObject dependencyObject)
         {
-            if (dependencyObject is not YsTextBox)
-                throw new ArgumentException($"UI-Element must be an {typeof(YsTextBox).FullName}");
+            if (dependencyObject is not AdvancedTextBox)
+                throw new ArgumentException($"UI-Element must be an {typeof(AdvancedTextBox).FullName}");
 
             base.BindProperties(dependencyObject);
 
-            Bind(YsTextBox.WatermarkProperty, dependencyObject, nameof(Watermark));
-            Bind(YsTextBox.LabelProperty, dependencyObject, nameof(Label));
-            Bind(YsTextBox.LabelForegorundProperty, dependencyObject, nameof(LabelForeground));
-            Bind(YsTextBox.AssistentTextProperty, dependencyObject, nameof(AssistentText));
-            Bind(YsTextBox.AssistenTextForegroundProperty, dependencyObject, nameof(AssistentTextForeground));
+            Bind(AdvancedTextBox.WatermarkProperty, dependencyObject, nameof(Watermark));
+            Bind(AdvancedTextBox.LabelProperty, dependencyObject, nameof(Label));
+            Bind(AdvancedTextBox.LabelForegorundProperty, dependencyObject, nameof(LabelForeground));
+            Bind(AdvancedTextBox.AssistentTextProperty, dependencyObject, nameof(AssistentText));
+            Bind(AdvancedTextBox.AssistenTextForegroundProperty, dependencyObject, nameof(AssistentTextForeground));
 
         }
     }

@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace YS.WPF.Controls.Bindings.NotifyPropertyChanged
+namespace WPF_Extensions.Bindings.NotifyPropertyChanged
 {
     public class ObservableObject : INotifyPropertyChanged, INotifyPropertyChanging
     {

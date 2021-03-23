@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace YS.WPF.Controls.Bindings
+namespace WPF_Extensions.Bindings
 {
     public class TextBoxBinding : ControlBinding
     {

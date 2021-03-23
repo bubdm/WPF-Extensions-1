@@ -16,7 +16,7 @@ using System.Windows.Markup;
 // Typ auf TRUE fest.
 
 [assembly: ComVisible(false)]
-[assembly: XmlnsDefinition("YS.WPF.Controls", "YS.WPF.Controls.Input")]
+[assembly: XmlnsDefinition("WPF_Extensions.Controls", "WPF_Extensions.Controls")]
 
 // Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM
 // bereitgestellt wird.

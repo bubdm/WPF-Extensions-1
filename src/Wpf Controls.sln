@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YS.WPF.Controls.Input", "YS.WPF.Controls.Input\YS.WPF.Controls.Input.csproj", "{F0D5D179-49C9-4652-A454-D9031A77B8E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF-Extensions.Controls", "YS.WPF.Controls.Input\WPF-Extensions.Controls.csproj", "{F0D5D179-49C9-4652-A454-D9031A77B8E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YS.WPF.Controls.Bindings", "YS.WPF.Controls.Bindings\YS.WPF.Controls.Bindings.csproj", "{75033268-C7A5-4547-B83F-1517FD83035D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF-Extensions.Bindings", "YS.WPF.Controls.Bindings\WPF-Extensions.Bindings.csproj", "{75033268-C7A5-4547-B83F-1517FD83035D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YS.WPF.Controls.Playground", "..\playground\YS.WPF.Controls.Playground\YS.WPF.Controls.Playground.csproj", "{4BC11A82-FC02-416A-957C-DF9172594D4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF-Extensions.Playground", "..\playground\YS.WPF.Controls.Playground\WPF-Extensions.Playground.csproj", "{4BC11A82-FC02-416A-957C-DF9172594D4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

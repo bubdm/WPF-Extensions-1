@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Controls;
 
-namespace YS.WPF.Controls.Bindings.ValidationRules
+namespace WPF_Extensions.Bindings.ValidationRules
 {
     public class MinMaxValidation : ValidationRule
     {

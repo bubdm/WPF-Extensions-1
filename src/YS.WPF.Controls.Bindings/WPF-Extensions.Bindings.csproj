@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>WPF_Extensions.Bindings</AssemblyName>
+    <RootNamespace>WPF_Extensions.Bindings</RootNamespace>
+  </PropertyGroup>
+
+</Project>

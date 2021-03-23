@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 
-namespace YS.WPF.Controls.Bindings
+namespace WPF_Extensions.Bindings
 {
     public class SelectorBinding : ItemsControlBinding
     {

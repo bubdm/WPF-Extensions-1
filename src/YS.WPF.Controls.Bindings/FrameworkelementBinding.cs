@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Data;
-using YS.WPF.Controls.Bindings.NotifyPropertyChanged;
+using WPF_Extensions.Bindings.NotifyPropertyChanged;
 
-namespace YS.WPF.Controls.Bindings
+namespace WPF_Extensions.Bindings
 {
     public class FrameworkelementBinding : ObservableObject
     {

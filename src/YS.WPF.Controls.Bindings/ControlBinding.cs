@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace YS.WPF.Controls.Bindings
+namespace WPF_Extensions.Bindings
 {
     public class ControlBinding : FrameworkelementBinding
     {

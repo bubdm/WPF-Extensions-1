@@ -11,5 +11,5 @@ using System.Windows.Markup;
 
 
 
-[assembly: XmlnsDefinition("YS.WPF.Controls", "YS.WPF.Controls.Bindings")]
+[assembly: XmlnsDefinition("WPF_Extensions.Bindings", "WPF_Extensions.Bindings")]
 

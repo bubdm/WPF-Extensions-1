@@ -7,7 +7,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace YS.WPF.Controls.Input
+namespace WPF_Extensions.Controls
 {
 
     public class AdvancedTextBox : TextBox
@@ -314,13 +314,9 @@ namespace YS.WPF.Controls.Input
 
             _listBox.ItemsSource = items;
             if (items.Count > 0)
-            {
                 ShowPopup();
-            }
             else
-            {
                 HidePopup();
-            }
         }
 
 

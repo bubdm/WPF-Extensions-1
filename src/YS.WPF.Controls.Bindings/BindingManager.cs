@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
 
-namespace YS.WPF.Controls.Bindings
+namespace WPF_Extensions.Bindings
 {
     public class BindingManager : DependencyObject
     {

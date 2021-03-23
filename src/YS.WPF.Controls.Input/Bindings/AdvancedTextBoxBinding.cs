@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
-using YS.WPF.Controls.Input;
+using WPF_Extensions.Controls;
 
-namespace YS.WPF.Controls.Bindings
+namespace WPF_Extensions.Bindings
 {
     public class AdvancedTextBoxBinding : TextBoxBinding
     {

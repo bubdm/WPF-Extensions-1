@@ -225,6 +225,12 @@ namespace YS.WPF.Controls.Input
 
         }
 
+        protected override void OnGotKeyboardFocus(KeyboardFocusChangedEventArgs e)
+        {
+            base.OnGotKeyboardFocus(e);
+            CaretIndex = Text.Length;
+        }
+
         private void OnKeyUp(object sender, KeyEventArgs e)
         {
 
@@ -236,6 +242,7 @@ namespace YS.WPF.Controls.Input
 
                     SelectedItem = _listBox.SelectedItem;
                     Text = SelectedItem?.ToString();
+                    CaretIndex = Text.Length;
                     _listBox.SelectedItem = null;
                     HidePopup();
                     SelectedSuggestionChanged?.Invoke(this, null);
@@ -268,6 +275,7 @@ namespace YS.WPF.Controls.Input
             Text = SelectedItem?.ToString();
             _listBox.SelectedItem = null;
             HidePopup();
+            Focus();
             SelectedSuggestionChanged?.Invoke(this, new EventArgs());
         }
 
@@ -305,7 +313,14 @@ namespace YS.WPF.Controls.Input
             }
 
             _listBox.ItemsSource = items;
-            ShowPopup();
+            if (items.Count > 0)
+            {
+                ShowPopup();
+            }
+            else
+            {
+                HidePopup();
+            }
         }
 
 

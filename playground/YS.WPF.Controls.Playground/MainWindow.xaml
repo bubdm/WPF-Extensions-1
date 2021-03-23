@@ -9,6 +9,8 @@
         xmlns:ys="YS.WPF.Controls"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
-        <ys:AdvancedTextBox Width="250" ys:BindingManager.Binding="{Binding TextBoxBinding}" Watermark="Test"/>
+        <ys:AdvancedTextBox Width="250" 
+                            ys:BindingManager.Binding="{Binding TextBoxBinding}" 
+                            Watermark="Test"/>
     </StackPanel>
 </Window>

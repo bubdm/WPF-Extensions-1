@@ -7,4 +7,8 @@
     <RootNamespace>WPF_Extensions.Controls</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WPF-Extensions.Bindings\WPF-Extensions.Bindings.csproj" />
+  </ItemGroup>
+
 </Project>

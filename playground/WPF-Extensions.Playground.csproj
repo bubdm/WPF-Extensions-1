@@ -8,4 +8,8 @@
     <RootNamespace>WPF_Extensions.Playground</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\src\WPF-Extension.Controls\WPF-Extensions.Controls.csproj" />
+  </ItemGroup>
+
 </Project>

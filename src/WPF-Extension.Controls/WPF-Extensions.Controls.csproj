@@ -1,14 +1,19 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <AssemblyName>WPF_Extensions.Controls</AssemblyName>
     <RootNamespace>WPF_Extensions.Controls</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageOutputDir>H:\Programmieren\NugetPackages\WPF-Extensions</PackageOutputDir>
+    <PackageVersion>0.1.0-local</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WPF-Extensions.Bindings\WPF-Extensions.Bindings.csproj" />
+    <PackageReference Include="ControlzEx" Version="5.0.0" />
+    <PackageReference Include="WPF_Extensions.Bindings" Version="0.1.0-local" />
   </ItemGroup>
 
 </Project>

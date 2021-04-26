@@ -1,10 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <AssemblyName>WPF_Extensions.Bindings</AssemblyName>
     <RootNamespace>WPF_Extensions.Bindings</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageVersion>0.1.0-local</PackageVersion>
+    <PackageOutputDir>H:\Programmieren\NugetPackages\WPF-Extensions</PackageOutputDir>
+    <RepositoryUrl></RepositoryUrl>
   </PropertyGroup>
 
 </Project>

@@ -23,7 +23,7 @@ namespace WPF_Extensions.Playground
             set => Set(value, ref _items);
         }
 
-
+ 
         public ViewModel()
         {
             TextBoxBinding = new AdvancedTextBoxBinding(new BindingParameter()

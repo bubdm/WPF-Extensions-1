@@ -6,6 +6,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/WPF_Extensions.Controls;component/Styles/AdvancedTextBoxStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPF_Extensions.Controls;component/Styles/AdvancedWindowStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPF_Extensions.Controls;component/Styles/DefaultCommandButtonsStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPF_Extensions.Controls;component/Styles/DefaultTitleBarStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

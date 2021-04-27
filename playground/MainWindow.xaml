@@ -1,13 +1,15 @@
 ﻿<we:AdvancedWindow x:Class="WPF_Extensions.Playground.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF_Extensions.Playground"
-        mc:Ignorable="d"
-        xmlns:we="WPF_Extensions.Controls"
-        xmlns:be="WPF_Extensions.Bindings"
-        Title="MainWindow" Height="450" Width="800">
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:local="clr-namespace:WPF_Extensions.Playground"
+                   mc:Ignorable="d"
+                   xmlns:we="WPF_Extensions.Controls"
+                   xmlns:be="WPF_Extensions.Bindings"
+                   Title="MainWindow" Height="450" Width="800"
+                   TitleBarBackground="LightGray">
     <StackPanel>
+        <TextBlock Text="Hallo Welt"/>
     </StackPanel>
 </we:AdvancedWindow>

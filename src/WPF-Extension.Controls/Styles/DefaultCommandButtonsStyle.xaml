@@ -1,0 +1,54 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:we="clr-namespace:WPF_Extensions.Controls">
+
+    <Style TargetType="{x:Type Button}" x:Key="CommandButtons">
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                          Margin="18,10"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="true"/>
+                                <Condition Property="Name" Value="CloseButton"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="Red"/>
+
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <ControlTemplate TargetType="{x:Type we:DefaultCommandButtons}" x:Key="DeafultCommandButtons">
+        <StackPanel Orientation="Horizontal">
+            <Button Content="&#xE949;"
+                    x:Name="MinimizeButton"
+                    Style="{StaticResource CommandButtons}"/>
+            <Button Content="&#xE739;"
+                    x:Name="MaxRestoreButton"
+                    Style="{StaticResource CommandButtons}"/>
+            <Button Content="&#xE106;"
+                    x:Name="CloseButton"
+                    Style="{StaticResource CommandButtons}"/>
+        </StackPanel>
+    </ControlTemplate>
+
+
+    <Style TargetType="{x:Type we:DefaultCommandButtons}">
+        <Setter Property="Template" Value="{StaticResource DeafultCommandButtons}"/>
+    </Style>
+    
+</ResourceDictionary>

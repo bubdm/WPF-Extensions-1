@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -7,6 +7,10 @@
     <AssemblyName>WPF_Extensions.Playground</AssemblyName>
     <RootNamespace>WPF_Extensions.Playground</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Fluent.Ribbon" Version="8.0.3" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\src\WPF-Extension.Controls\WPF-Extensions.Controls.csproj" />

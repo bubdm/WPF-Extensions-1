@@ -2,13 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:we="clr-namespace:WPF_Extensions.Controls">
 
-
-
     <ControlTemplate TargetType="{x:Type we:AdvancedWindow}"
                      x:Key="AdvancedWindowTemplate">
         <Grid LayoutTransform="{Binding LayoutTransform, RelativeSource={RelativeSource TemplatedParent}}"
               RenderTransform="{Binding RenderTransform, RelativeSource={RelativeSource TemplatedParent}}">
-            <AdornerDecorator>
+            <AdornerDecorator x:Name="Adorner">
                 <Grid Background="{TemplateBinding Background}">
 
                     <Grid.RowDefinitions>
@@ -17,16 +15,24 @@
                     </Grid.RowDefinitions>
 
                     <DockPanel Grid.Row="0"
-                               LastChildFill="True">
-                        <Image DockPanel.Dock="Left"/>
+                               LastChildFill="True"
+                               x:Name="Titlebar"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Stretch"
+                               Background="{TemplateBinding TitleBarBackground}">
 
-                        <StackPanel DockPanel.Dock="Right">
-                            <Button Content="_"/>
-                            <Button Content="[ ]"/>
-                            <Button Content="X"/>
-                        </StackPanel>
+                        <ContentPresenter DockPanel.Dock="Right"
+                                          x:Name="PART_CommandButtons"
+                                          Content="{TemplateBinding CommandButtons}"/>
+
+
+
+                        <ContentPresenter x:Name="PART_TitleBar"
+                                          Content="{TemplateBinding TitleBar}"
+                                          TextBlock.Foreground="Black"
+                                          Margin="10,5"/>
                     </DockPanel>
-                    
+
                     <ContentPresenter Grid.Row="1" x:Name="PART_ContentPresenter"/>
                 </Grid>
             </AdornerDecorator>
@@ -55,23 +61,56 @@
         </Grid>
 
         <ControlTemplate.Triggers>
-            <!--  handle active/inactive state  -->
-            <Trigger Property="IsActive" Value="False">
+            <Trigger Property="IsActive"
+                     Value="False">
+                <Setter Property="Opacity"
+                        TargetName="PART_CommandButtons"
+                        Value="0.5" />
                 <Setter TargetName="PART_Border" Property="BorderBrush" Value="{Binding Path=NonActiveWindowGlow, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
-            </Trigger>
-            <Trigger SourceName="PART_Border" Property="BorderBrush" Value="{x:Null}">
-                <Setter TargetName="PART_Border2" Property="BorderBrush" Value="Black" />
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="Window.ResizeMode" Value="CanResizeWithGrip" />
-                    <Condition Property="Window.WindowState" Value="Normal" />
+                    <Condition Property="IsActive" Value="False" />
+                    <Condition Property="NonActiveWindowGlow" Value="{x:Null}" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="WindowResizeGrip" Property="Visibility" Value="Visible" />
+                <Setter TargetName="PART_Border" Property="BorderBrush" Value="{Binding Path=NonActiveWindowGlow, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
             </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsActive" Value="True" />
+                    <Condition Property="WindowGlow" Value="{x:Null}" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="PART_Border" Property="BorderBrush" Value="{Binding Path=BorderBrush, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ResizeMode"
+                               Value="CanResizeWithGrip" />
+                    <Condition Property="WindowState"
+                               Value="Normal" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Visibility"
+                        TargetName="PART_Border"
+                        Value="Visible" />
+                <Setter Property="Visibility"
+                        TargetName="WindowResizeGrip"
+                        Value="Visible" />
+            </MultiTrigger>
+            <Trigger Property="WindowState"
+                     Value="Maximized">
+                <Setter Property="Margin"
+                        TargetName="Adorner"
+                        Value="0" />
+                <Setter Property="Visibility"
+                        TargetName="PART_Border"
+                        Value="Collapsed" />
+                <Setter Property="Visibility"
+                        TargetName="WindowResizeGrip"
+                        Value="Collapsed" />
+            </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-
+    
     <Style TargetType="{x:Type we:AdvancedWindow}">
         <Setter Property="Template" Value="{StaticResource AdvancedWindowTemplate}"/>
 

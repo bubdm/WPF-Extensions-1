@@ -8,6 +8,7 @@
                    xmlns:we="WPF_Extensions.Controls"
                    xmlns:be="WPF_Extensions.Bindings"
                    Title="MainWindow" Height="450" Width="800"
+                   Background="Red"
                    TitleBarBackground="LightGray">
     <StackPanel>
         <TextBlock Text="Hallo Welt"/>

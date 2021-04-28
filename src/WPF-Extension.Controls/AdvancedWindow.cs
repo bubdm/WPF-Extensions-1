@@ -84,7 +84,7 @@ namespace WPF_Extensions.Controls
 
         // Using a DependencyProperty as the backing store for WindowGlow.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty WindowGlowProperty =
-            DependencyProperty.Register("WindowGlow", typeof(Brush), typeof(AdvancedWindow), new PropertyMetadata(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#007ACC"))));
+            DependencyProperty.Register("WindowGlow", typeof(Brush), typeof(AdvancedWindow), new PropertyMetadata());
 
 
 
@@ -97,7 +97,7 @@ namespace WPF_Extensions.Controls
 
         // Using a DependencyProperty as the backing store for NonActiveWindowGlow.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty NonActiveWindowGlowProperty =
-            DependencyProperty.Register("NonActiveWindowGlow", typeof(Brush), typeof(AdvancedWindow), new PropertyMetadata(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3E3E42"))));
+            DependencyProperty.Register("NonActiveWindowGlow", typeof(Brush), typeof(AdvancedWindow), new PropertyMetadata());
 
 
 

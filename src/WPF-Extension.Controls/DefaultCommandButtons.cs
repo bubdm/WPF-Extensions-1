@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +12,11 @@ namespace WPF_Extensions.Controls
 {
     public class DefaultCommandButtons : UserControl
     {
-        private Button _maxRestoreButton;
         private Window _parentWindow;
+
+        private Button _maxRestoreButton;
+        private Button _closeButton;
+        private Button _minimizeButton;
 
         static DefaultCommandButtons()
         {
@@ -25,14 +29,17 @@ namespace WPF_Extensions.Controls
 
             _parentWindow = GetParentWindow();
 
-            var closeButton = GetTemplateChild("CloseButton") as Button;
-            var minimizeButton = GetTemplateChild("MinimizeButton") as Button;
+            _closeButton = GetTemplateChild("CloseButton") as Button;
+            _minimizeButton = GetTemplateChild("MinimizeButton") as Button;
             _maxRestoreButton = GetTemplateChild("MaxRestoreButton") as Button;
 
-            closeButton.Click += (s, e) => _parentWindow?.Close();
-            minimizeButton.Click += (s, e) => _parentWindow.WindowState = WindowState.Minimized;
+            _closeButton.Click += (s, e) => _parentWindow?.Close();
+            _minimizeButton.Click += (s, e) => _parentWindow.WindowState = WindowState.Minimized;
             _maxRestoreButton.Click += (s, e) => _parentWindow.WindowState = _parentWindow.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
 
+            ResizeModeChanged(null, null);
+
+            _parentWindow.Loaded += ParentWindow_Loaded;
 
             _parentWindow.StateChanged += (s, e) =>
             {
@@ -50,6 +57,36 @@ namespace WPF_Extensions.Controls
             };
         }
 
+        private void ParentWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            var resizeModeDescriptor = DependencyPropertyDescriptor.FromProperty(Window.ResizeModeProperty, typeof(AdvancedWindow));
+            resizeModeDescriptor.AddValueChanged(_parentWindow, ResizeModeChanged);
+        }
+
+        private void ResizeModeChanged(object sender, EventArgs e)
+        {
+            switch (_parentWindow.ResizeMode)
+            {
+                case ResizeMode.NoResize:
+                    _maxRestoreButton.Visibility = Visibility.Collapsed;
+                    _minimizeButton.Visibility = Visibility.Collapsed;
+                    break;
+                case ResizeMode.CanMinimize:
+                    _maxRestoreButton.Visibility = Visibility.Collapsed;
+                    _minimizeButton.Visibility = Visibility.Visible;
+                    break;
+                case ResizeMode.CanResize:
+                    _maxRestoreButton.Visibility = Visibility.Visible;
+                    _minimizeButton.Visibility = Visibility.Visible;
+                    break;
+                case ResizeMode.CanResizeWithGrip:
+                    _maxRestoreButton.Visibility = Visibility.Visible;
+                    _minimizeButton.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    break;
+            }
+        }
 
         private Window GetParentWindow()
         {

@@ -19,7 +19,7 @@ namespace WPF_Extensions.Playground
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : AdvancedWindow
+    public partial class MainWindow
     {
 
         private ViewModel _vm;

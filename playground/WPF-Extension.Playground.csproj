@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>WPF_Extension.Playground</AssemblyName>
+    <RootNamespace>WPF_Extension.Playground</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\WPF-Extension.Bindings\WPF-Extension.Bindings.csproj" />
+  </ItemGroup>
+
+</Project>

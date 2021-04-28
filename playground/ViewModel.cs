@@ -1,9 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Data;
-using WPF_Extensions.Bindings;
-using WPF_Extensions.Bindings.NotifyPropertyChanged;
+using WPF_Extension.Bindings;
+using WPF_Extension.Bindings.NotifyPropertyChanged;
 
-namespace WPF_Extensions.Playground
+namespace WPF_Extension.Playground
 {
     public class ViewModel : ObservableObject
     {

@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPF_Extensions.Controls;
+using WPF_Extension.Controls;
 
-namespace WPF_Extensions.Playground
+namespace WPF_Extension.Playground
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

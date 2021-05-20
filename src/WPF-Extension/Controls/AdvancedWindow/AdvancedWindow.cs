@@ -172,7 +172,7 @@ namespace WPF_Extension.Controls
             BorderThicknessProperty.OverrideMetadata(typeof(AdvancedWindow), new FrameworkPropertyMetadata(new Thickness(1)));
             WindowStyleProperty.OverrideMetadata(typeof(AdvancedWindow), new FrameworkPropertyMetadata(WindowStyle.None));
             AllowsTransparencyProperty.OverrideMetadata(typeof(AdvancedWindow), new FrameworkPropertyMetadata(false));
-            BackgroundProperty.OverrideMetadata(typeof(AdvancedWindow), new FrameworkPropertyMetadata(new SolidColorBrush(Colors.White)));
+            BackgroundProperty.OverrideMetadata(typeof(AdvancedWindow), new FrameworkPropertyMetadata(new SolidColorBrush(System.Windows.Media.Colors.White)));
         }
 
         public AdvancedWindow()

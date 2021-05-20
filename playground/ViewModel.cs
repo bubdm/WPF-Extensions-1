@@ -1,7 +1,9 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Data;
 using WPF_Extension.Bindings;
 using WPF_Extension.Bindings.NotifyPropertyChanged;
+using WPF_Extension.Theming;
 
 namespace WPF_Extension.Playground
 {
@@ -26,6 +28,7 @@ namespace WPF_Extension.Playground
  
         public ViewModel()
         {
+
             TextBoxBinding = new AdvancedTextBoxBinding(new BindingParameter()
             {
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged

@@ -1,0 +1,50 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WPF_Extension.Controls.ColorPicker"
+                    xmlns:conv="clr-namespace:WPF_Extension.Converter">
+
+
+    <LinearGradientBrush x:Key="xGradient"
+                         StartPoint="0,0"
+                         EndPoint="1,0">
+        <GradientStop Color="White" Offset="0"/>
+        <GradientStop Color="Transparent" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="yGradient"
+                         StartPoint="0,0"
+                         EndPoint="0,1">
+        <GradientStop Color="#ff000000" Offset="1"/>
+        <GradientStop Color="#00000000" Offset="0"/>
+    </LinearGradientBrush>
+    
+    <ControlTemplate TargetType="{x:Type local:ColorCanvas}" x:Key="ColorCanvasTemplate">
+        <Canvas>
+            <Rectangle x:Name="ColorShadingRectangle"
+                       Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}"
+                       Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualHeight}"
+                       Fill="{TemplateBinding CanvasColor, Converter={conv:ColorToSolidBrushConverter}}" />
+
+            <Rectangle x:Name="PART_XGradient"
+                       Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}"
+                       Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualHeight}"
+                       Fill="{StaticResource xGradient}" />
+
+            <Rectangle x:Name="PART_YGradient"
+                       Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}"
+                       Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualHeight}"
+                       Fill="{StaticResource yGradient}" />
+
+
+            <ContentPresenter Content="{TemplateBinding Selector}"
+                                  x:Name="PART_ColorSelector"/>
+
+        </Canvas>
+    </ControlTemplate>
+
+
+    <Style TargetType="{x:Type local:ColorCanvas}">
+        <Setter Property="Template" Value="{StaticResource ColorCanvasTemplate}"/>
+    </Style>
+    
+</ResourceDictionary>

@@ -17,6 +17,8 @@ using System.Windows.Markup;
 
 [assembly: ComVisible(false)]
 [assembly: XmlnsDefinition("WPF_Extension", "WPF_Extension.Controls")]
+[assembly: XmlnsDefinition("WPF_Extension", "WPF_Extension.Controls.ColorPicker")]
+[assembly: XmlnsDefinition("WPF_Extension", "WPF_Extension.Converter")]
 
 // Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM
 // bereitgestellt wird.

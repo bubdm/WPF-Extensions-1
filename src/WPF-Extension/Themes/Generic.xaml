@@ -5,9 +5,11 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/WPF_Extension;component/Styles/AdvancedTextBoxStyle.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPF_Extension;component/Styles/AdvancedWindowStyle.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPF_Extension;component/Styles/DefaultCommandButtonsStyle.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPF_Extension;component/Styles/DefaultTitleBarStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPF_Extension;component/Styles/AdvancedWindow/AdvancedWindowStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPF_Extension;component/Styles/AdvancedWindow/DefaultCommandButtonsStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPF_Extension;component/Styles/AdvancedWindow/DefaultTitleBarStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPF_Extension;component/Styles/ColorPicker/ColorPickerStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPF_Extension;component/Styles/ColorPicker/ColorSliderStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPF_Extension;component/Styles/ColorPicker/ColorCanvasStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-
 </ResourceDictionary>

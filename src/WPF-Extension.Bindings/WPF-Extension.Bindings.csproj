@@ -7,7 +7,7 @@
     <RootNamespace>WPF_Extension.Bindings</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageVersion>0.1.0-local</PackageVersion>
+    <PackageVersion>0.1.1-local</PackageVersion>
     <PackageOutputDir>H:\Programmieren\NugetPackages\WPF-Extensions</PackageOutputDir>
     <RepositoryUrl></RepositoryUrl>
   </PropertyGroup>

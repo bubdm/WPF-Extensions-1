@@ -12,7 +12,7 @@ namespace WPF_Extension.Bindings
 {
     public class TextBoxBinding : ControlBinding
     {
-        protected Binding _textBinding;
+        protected Binding TextBinding;
         protected DependencyObject DependencyObject;
 
         private string _text;
@@ -23,7 +23,12 @@ namespace WPF_Extension.Bindings
             set => Set(value, ref _text);
         }
 
-
+        private bool _isReadOnly;
+        public bool IsReadOnly 
+        { 
+            get => _isReadOnly; 
+            set => Set(value, ref _isReadOnly); 
+        }
 
         public TextBoxBinding(BindingParameter bindingParameter)
             : base(bindingParameter)
@@ -38,7 +43,8 @@ namespace WPF_Extension.Bindings
 
             DependencyObject = dependencyObject;
             base.BindProperties(dependencyObject);
-            _textBinding = Bind(TextBox.TextProperty, dependencyObject, nameof(Text));
+            TextBinding = Bind(TextBox.TextProperty, dependencyObject, nameof(Text));
+            Bind(TextBox.IsReadOnlyProperty, dependencyObject, nameof(IsReadOnly));
         }
     }
 
@@ -81,7 +87,7 @@ namespace WPF_Extension.Bindings
 
             foreach (var rule in _rules)
             {
-                _textBinding.ValidationRules.Add(rule);
+                TextBinding.ValidationRules.Add(rule);
             }
             _rules.CollectionChanged += OnRulesChanged;
 
@@ -107,7 +113,7 @@ namespace WPF_Extension.Bindings
             {
                 foreach (ValidationRule rule in e.NewItems)
                 {
-                    _textBinding.ValidationRules.Add(rule);
+                    TextBinding.ValidationRules.Add(rule);
                 }
             }
 
@@ -115,7 +121,7 @@ namespace WPF_Extension.Bindings
             {
                 foreach (ValidationRule rule in e.OldItems)
                 {
-                    _textBinding.ValidationRules.Remove(rule);
+                    TextBinding.ValidationRules.Remove(rule);
                 }
             }
         }

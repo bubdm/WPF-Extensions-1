@@ -93,7 +93,7 @@ namespace WPF_Extension.Bindings
         }
     }
 
-    public class YsTextBoxBinding<T> : TextBoxBinding<T>
+    public class AdvancedTextBoxBinding<T> : TextBoxBinding<T>
         where T : IConvertible
     {
 
@@ -138,7 +138,7 @@ namespace WPF_Extension.Bindings
             set => Set(value, ref _assistentTextForeground);
         }
 
-        public YsTextBoxBinding(BindingParameter bindingParameter)
+        public AdvancedTextBoxBinding(BindingParameter bindingParameter)
             : base(bindingParameter)
         {
 

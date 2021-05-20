@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF_Extension.Controls;
+using WPF_Extension.ColorExtensions;
+using WPF_Extension.Theming;
 
 namespace WPF_Extension.Playground
 {
@@ -22,13 +24,16 @@ namespace WPF_Extension.Playground
     public partial class MainWindow
     {
 
-        private ViewModel _vm;
-
         public MainWindow()
         {
-            _vm = new ViewModel();
-            DataContext = _vm;
             InitializeComponent();
+        }
+
+
+
+        private void PART_Slider_SelectedColorChanged(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

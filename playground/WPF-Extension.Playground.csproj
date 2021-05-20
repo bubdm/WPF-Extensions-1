@@ -9,6 +9,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Page Remove="Themes\SecondTestTheme.xaml" />
+    <Page Remove="Themes\TestTheme.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Themes\SecondTestTheme.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Generator>MSBuild:Compile</Generator>
+    </Content>
+    <Content Include="Themes\TestTheme.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Generator>MSBuild:Compile</Generator>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\src\WPF-Extension.Bindings\WPF-Extension.Bindings.csproj" />
   </ItemGroup>
 

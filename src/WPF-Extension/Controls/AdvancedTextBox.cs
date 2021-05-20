@@ -52,7 +52,7 @@ namespace WPF_Extension.Controls
 
         // Using a DependencyProperty as the backing store for LabelForegorund.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LabelForegorundProperty =
-            DependencyProperty.Register("LabelForegorund", typeof(Brush), typeof(AdvancedTextBox), new PropertyMetadata(new SolidColorBrush(Colors.Black)));
+            DependencyProperty.Register("LabelForegorund", typeof(Brush), typeof(AdvancedTextBox), new PropertyMetadata(new SolidColorBrush(System.Windows.Media.Colors.Black)));
 
 
 
@@ -92,7 +92,7 @@ namespace WPF_Extension.Controls
 
         // Using a DependencyProperty as the backing store for WatermarkForegorund.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty WatermarkForegorundProperty =
-            DependencyProperty.Register("WatermarkForegorund", typeof(Brush), typeof(AdvancedTextBox), new PropertyMetadata(new SolidColorBrush(Colors.Gray)));
+            DependencyProperty.Register("WatermarkForegorund", typeof(Brush), typeof(AdvancedTextBox), new PropertyMetadata(new SolidColorBrush(System.Windows.Media.Colors.Gray)));
 
         #endregion
 
@@ -146,7 +146,7 @@ namespace WPF_Extension.Controls
 
         // Using a DependencyProperty as the backing store for AssistenTextForeground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty AssistenTextForegroundProperty =
-            DependencyProperty.Register("AssistenTextForeground", typeof(Brush), typeof(AdvancedTextBox), new PropertyMetadata(new SolidColorBrush(Colors.Gray)));
+            DependencyProperty.Register("AssistenTextForeground", typeof(Brush), typeof(AdvancedTextBox), new PropertyMetadata(new SolidColorBrush(System.Windows.Media.Colors.Gray)));
 
 
 
@@ -199,7 +199,7 @@ namespace WPF_Extension.Controls
 
         // Using a DependencyProperty as the backing store for HoverColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HoverColorProperty =
-            DependencyProperty.Register("HoverColor", typeof(Brush), typeof(AdvancedTextBox), new PropertyMetadata(new SolidColorBrush(Colors.LightBlue)));
+            DependencyProperty.Register("HoverColor", typeof(Brush), typeof(AdvancedTextBox), new PropertyMetadata(new SolidColorBrush(System.Windows.Media.Colors.LightBlue)));
 
 
         #endregion

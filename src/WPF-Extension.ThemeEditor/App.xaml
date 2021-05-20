@@ -1,15 +1,13 @@
-﻿<Application x:Class="WPF_Extension.Playground.App"
+﻿<prism:PrismApplication x:Class="WPF_Extension.ThemeEditor.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WPF_Extension.Playground"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:WPF_Extension.ThemeEditor"
+             xmlns:prism="http://prismlibrary.com/" >
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <Color x:Key="Red" >#FF0000</Color>
-                </ResourceDictionary>
+                
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
-</Application>
+</prism:PrismApplication>

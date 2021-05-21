@@ -14,52 +14,54 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type we:AdvancedTextBox}">
                     <StackPanel>
+                        <DockPanel>
+                            <!-- Label -->
+                            <TextBlock x:Name="Label"
+                                       Grid.Row="0"
+                                       Padding="{TemplateBinding LabelPadding}"
+                                       Text="{TemplateBinding Label}"
+                                       Foreground="{TemplateBinding LabelForegorund}"
+                                       FontSize="{TemplateBinding LabelFontSize}"/>
+                            
+                            <Border x:Name="Border"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{TemplateBinding  CornerRadius}">
 
-                        <!-- Label -->
-                        <TextBlock x:Name="Label"
-                                   Grid.Row="0"
-                                   Padding="{TemplateBinding LabelPadding}"
-                                   Text="{TemplateBinding Label}"
-                                   Foreground="{TemplateBinding LabelForegorund}"
-                                   FontSize="{TemplateBinding LabelFontSize}"/>
-                        <Border Grid.Row="1"
-                                x:Name="Border"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{TemplateBinding  CornerRadius}">
+                                <Grid >
+                                    <!-- TextInput -->
+                                    <ScrollViewer x:Name="PART_ContentHost" 
+                                                  Focusable="True" 
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  HorizontalScrollBarVisibility="Hidden" 
+                                                  VerticalScrollBarVisibility="Hidden"
+                                                  Padding="{TemplateBinding Padding}"
+                                                  Margin="0"
+                                                  Height="{TemplateBinding Height}"
+                                                  FontSize="{TemplateBinding FontSize}"/>
+                                    <!-- Popup -->
+                                    <Popup x:Name="Popup"
+                                           Placement="Bottom"
+                                           Width="{TemplateBinding Width}">
+                                        <ListBox x:Name="ListBox"/>
+                                    </Popup>
 
-                            <Grid >
-                                <!-- TextInput -->
-                                <ScrollViewer x:Name="PART_ContentHost" 
-                                              Focusable="True" 
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              HorizontalScrollBarVisibility="Hidden" 
-                                              VerticalScrollBarVisibility="Hidden"
-                                              Padding="{TemplateBinding Padding}"
-                                              Margin="0"
-                                              Height="{TemplateBinding Height}"
-                                              FontSize="{TemplateBinding FontSize}"/>
-                                <!-- Popup -->
-                                <Popup x:Name="Popup"
-                                    Placement="Bottom"
-                                    Width="{TemplateBinding Width}">
-                                    <ListBox x:Name="ListBox"/>
-                                </Popup>
+                                    <!-- Watermark -->
+                                    <TextBlock x:Name="Watermark"
+                                               Padding="1,0,0,0"
+                                               Text="{TemplateBinding Watermark}"
+                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                               Foreground="{TemplateBinding WatermarkForegorund}"
+                                               IsHitTestVisible="False"
+                                               Margin="{TemplateBinding Padding}"
+                                               Visibility="Collapsed"
+                                               FontSize="{TemplateBinding FontSize}"/>
+                                </Grid>
+                            </Border>
 
-                                <!-- Watermark -->
-                                <TextBlock x:Name="Watermark"
-                                           Padding="1,0,0,0"
-                                           Text="{TemplateBinding Watermark}"
-                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                           Foreground="{TemplateBinding WatermarkForegorund}"
-                                           IsHitTestVisible="False"
-                                           Margin="{TemplateBinding Padding}"
-                                           Visibility="Collapsed"
-                                           FontSize="{TemplateBinding FontSize}"/>
-                            </Grid>
-                        </Border>
+                        </DockPanel>
                         <!-- Assistant text -->
                         <TextBlock x:Name="AssistentText"
                                    Text="{TemplateBinding AssistentText}"
@@ -71,6 +73,14 @@
                     </StackPanel>
 
                     <ControlTemplate.Triggers>
+
+                        <Trigger Property="LabelPosition" Value="Lef">
+                            <Setter Property="DockPanel.Dock" Value="Left" TargetName="Label"/>
+                        </Trigger>
+
+                        <Trigger Property="LabelPosition" Value="Top">
+                            <Setter Property="DockPanel.Dock" Value="Top" TargetName="Label"/>
+                        </Trigger>
 
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Label}" Value="">
                             <Setter Property="Visibility" Value="Collapsed" TargetName="Label" />

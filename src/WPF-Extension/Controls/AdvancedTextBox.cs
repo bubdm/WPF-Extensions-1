@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
+using WPF_Extension.Enums;
 
 namespace WPF_Extension.Controls
 {
@@ -56,7 +57,6 @@ namespace WPF_Extension.Controls
 
 
 
-
         public Thickness LabelPadding
         {
             get => (Thickness)GetValue(LabelPaddingProperty);
@@ -66,6 +66,22 @@ namespace WPF_Extension.Controls
         // Using a DependencyProperty as the backing store for LabelPadding.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LabelPaddingProperty =
             DependencyProperty.Register("LabelPadding", typeof(Thickness), typeof(AdvancedTextBox), new PropertyMetadata(new Thickness(0)));
+
+
+
+
+
+        public LabelPosition LabelPosition
+        {
+            get => (LabelPosition)GetValue(LabelPositionProperty);
+            set => SetValue(LabelPositionProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for LabelPosition.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty LabelPositionProperty =
+            DependencyProperty.Register("LabelPosition", typeof(LabelPosition), typeof(AdvancedTextBox), new PropertyMetadata(LabelPosition.Top));
+
+
 
 
 

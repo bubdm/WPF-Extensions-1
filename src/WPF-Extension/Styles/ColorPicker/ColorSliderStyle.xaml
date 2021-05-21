@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:we="clr-namespace:WPF_Extension.Controls.ColorPicker"
+                    xmlns:cont="clr-namespace:WPF_Extension.Controls"
                     xmlns:conv="clr-namespace:WPF_Extension.Converter">
 
     <LinearGradientBrush x:Key="HueBrush" StartPoint="0,0" EndPoint="0,1">
@@ -14,34 +15,6 @@
             <GradientStop Color="#FF0000" Offset="1" />
         </LinearGradientBrush.GradientStops>
     </LinearGradientBrush>
-
-
-    <DrawingBrush Stretch="None" TileMode="Tile" Viewport="0,0,10,10" ViewportUnits="Absolute" x:Key="CheckerBrush">
-
-        <!-- a drawing of 4 checkerboard tiles -->
-        <DrawingBrush.Drawing>
-            <DrawingGroup>
-
-                <!-- checkerboard background -->
-                <GeometryDrawing Brush="White">
-                    <GeometryDrawing.Geometry>
-                        <RectangleGeometry Rect="0,0,10,10" />
-                    </GeometryDrawing.Geometry>
-                </GeometryDrawing>
-
-                <!-- two checkerboard foreground tiles -->
-                <GeometryDrawing Brush="Gray">
-                    <GeometryDrawing.Geometry>
-                        <GeometryGroup>
-                            <RectangleGeometry Rect="0,0,5,5" />
-                            <RectangleGeometry Rect="5,5,5,5" />
-                        </GeometryGroup>
-                    </GeometryDrawing.Geometry>
-                </GeometryDrawing>
-
-            </DrawingGroup>
-        </DrawingBrush.Drawing>
-    </DrawingBrush>
 
     <Style x:Key="ThumbStyle"
          TargetType="{x:Type Thumb}">
@@ -85,23 +58,13 @@
 
 
     <ControlTemplate TargetType="{x:Type we:ColorSlider}" x:Key="ColorSlider">
-        <Grid Width="{TemplateBinding Width}"
-              Height="{TemplateBinding Height}">
-            <Border Background="{StaticResource CheckerBrush}"
-                    x:Name="PART_Border"
+        <Grid>
+            <Border x:Name="PART_Border"
                     Padding="0"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    Width="{TemplateBinding Width}"
-                    Height="{TemplateBinding Height}">
-                <Border Background="{TemplateBinding GradientBrush}"
-                        Padding="0"
-                        VerticalAlignment="Stretch"
-                        HorizontalAlignment="Stretch"
-                        Margin="0"
-                        Width="{TemplateBinding Width}"
-                        Height="{TemplateBinding Height}"/>
-
+                    Background="Green"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch">
+                <cont:ColorPresenter Fill="{TemplateBinding LinearGradient}"/> 
             </Border>
 
             <Track Name="PART_Track">
@@ -124,18 +87,20 @@
     </ControlTemplate>
 
     <Style TargetType="{x:Type we:ColorSlider}">
-        <Setter Property="BorderBrush" Value="Black" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="SmallChange" Value="0.05" />
+        <Setter Property="SmallChange" Value="1" />
+        <Setter Property="Height" Value="Auto"/>
         <Setter Property="Orientation" Value="Vertical" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Minimum" Value="0" />
         <Setter Property="Maximum" Value="100" />
-        <Setter Property="TickFrequency" Value="0.0001" />
+        <Setter Property="TickFrequency" Value="0.001" />
         <Setter Property="IsSnapToTickEnabled" Value="True" />
+        <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="IsDirectionReversed" Value="False" />
         <Setter Property="IsMoveToPointEnabled" Value="True" />
         <Setter Property="Value" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
         <Setter Property="Template" Value="{StaticResource ColorSlider}"/>
     </Style>
 

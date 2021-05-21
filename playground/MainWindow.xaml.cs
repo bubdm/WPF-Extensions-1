@@ -23,17 +23,15 @@ namespace WPF_Extension.Playground
     /// </summary>
     public partial class MainWindow
     {
-
+        private int counter = 0;
         public MainWindow()
         {
             InitializeComponent();
         }
 
-
-
-        private void PART_Slider_SelectedColorChanged(object sender, RoutedEventArgs e)
+        private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
         {
-
+            counter++;
         }
     }
 }

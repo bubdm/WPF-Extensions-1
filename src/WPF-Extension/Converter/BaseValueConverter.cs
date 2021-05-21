@@ -5,15 +5,15 @@ using System.Windows.Markup;
 
 namespace WPF_Extension.Converter
 {
-    public abstract class BaseValueConverter<T> : MarkupExtension, IValueConverter
-        where T: class, new()
+    public abstract class BaseValueConverter<TConverter> : MarkupExtension, IValueConverter
+        where TConverter: class, new()
         
     {
-        private static T _converter = null;
+        private static TConverter _converter = null;
 
 
         public override object ProvideValue(IServiceProvider serviceProvider)
-            => _converter ??= new T();
+            => _converter ??= new TConverter();
 
 
         public abstract object Convert(object value, Type targetType, object parameter, CultureInfo culture);

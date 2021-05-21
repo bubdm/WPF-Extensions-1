@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
@@ -18,15 +19,16 @@ namespace WPF_Extension.Controls.ColorPicker
 
         #region DependencyProperties
 
-        public LinearGradientBrush GradientBrush
+
+        public LinearGradientBrush LinearGradient
         {
-            get => (LinearGradientBrush)GetValue(GradientBrushProperty);
-            set => SetValue(GradientBrushProperty, value);
+            get => (LinearGradientBrush)GetValue(LinearGradientProperty);
+            protected set => SetValue(_linearGradientPropertyKey, value);
         }
 
-        // Using a DependencyProperty as the backing store for GradientBrush.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty GradientBrushProperty =
-            DependencyProperty.Register("GradientBrush", typeof(LinearGradientBrush), typeof(ColorSlider), new PropertyMetadata(new LinearGradientBrush
+        // Using a DependencyProperty as the backing store for SelectedColor.  This enables animation, styling, binding, etc...
+        private static readonly DependencyPropertyKey _linearGradientPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(LinearGradient), typeof(LinearGradientBrush), typeof(ColorSlider), new PropertyMetadata(new LinearGradientBrush
             {
                 StartPoint = new Point(0, 0),
                 EndPoint = new Point(0, 1),
@@ -42,6 +44,40 @@ namespace WPF_Extension.Controls.ColorPicker
                 }
             }));
 
+        public static readonly DependencyProperty LinearGradientProperty
+            = _linearGradientPropertyKey.DependencyProperty;
+
+        public GradientStopCollection GradientStops
+        {
+            get => (GradientStopCollection)GetValue(GradientStopsProperty);
+            set => SetValue(GradientStopsProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for GradientBrush.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty GradientStopsProperty =
+            DependencyProperty.Register("GradientBrush", typeof(GradientStopCollection), typeof(ColorSlider), new PropertyMetadata(new GradientStopCollection
+            {
+                new GradientStop(Colors.Red, 0),
+                new GradientStop(Colors.Yellow, 0.167),
+                new GradientStop(Colors.Lime,0.333),
+                new GradientStop(Colors.Cyan, 0.5),
+                new GradientStop(Colors.Blue,0.667),
+                new GradientStop(Colors.Magenta, 0.833),
+                new GradientStop(Colors.Red, 1)
+            }, OnGradientStopsChanged));
+
+        private static void OnGradientStopsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var slider = d as ColorSlider;
+            if (slider != null)
+                slider.OnGradientStopsChanged();
+        }
+
+        private void OnGradientStopsChanged()
+        {
+            UpdateLinearGradient(Orientation);
+            UpdateColor(Value);
+        }
 
         public Color SelectedColor
         {
@@ -76,7 +112,6 @@ namespace WPF_Extension.Controls.ColorPicker
 
         protected virtual void OnSelectedColorChanged(Color oldValue, Color newValue)
         {
-            //UpdatedValue(newValue);
             var args = new RoutedPropertyChangedEventArgs<Color>(oldValue, newValue)
             {
                 RoutedEvent = SelectedColorChangedEvent
@@ -102,32 +137,14 @@ namespace WPF_Extension.Controls.ColorPicker
 
         private void OnOrientationChanged(Orientation oldValue, Orientation newValue)
         {
-            if (newValue == Orientation.Horizontal)
-            {
-                var newbrush = new LinearGradientBrush
-                {
-                    GradientStops = GradientBrush.GradientStops,
-                    StartPoint = new Point(0, 0),
-                    EndPoint = new Point(1, 0)
-                };
-                GradientBrush = newbrush;
-            }
-            else
-            {
-                var newbrush = new LinearGradientBrush
-                {
-                    GradientStops = GradientBrush.GradientStops,
-                    StartPoint = new Point(0, 0),
-                    EndPoint = new Point(0, 1)
-                };
-                GradientBrush = newbrush; GradientBrush.EndPoint = new Point(0, 1);
-            }
+            UpdateLinearGradient(newValue);
             AdjustBorderAndThumb();
         }
 
         public ColorSlider()
         {
             Loaded += ColorSlider_Loaded;
+            SizeChanged += (s, e) => AdjustBorderAndThumb();
         }
 
         private void ColorSlider_Loaded(object sender, RoutedEventArgs e)
@@ -150,16 +167,47 @@ namespace WPF_Extension.Controls.ColorPicker
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-
-
             OnValueChanged(0, Value);
+            OnOrientationChanged(Orientation, Orientation);
+            UpdateColor(Value);
         }
 
         protected override void OnValueChanged(double oldValue, double newValue)
         {
             base.OnValueChanged(oldValue, newValue);
-            var oldColor = SelectedColor;
-            SelectedColor = Orientation == Orientation.Vertical ? GradientBrush.GetColorAtOffset(1 - newValue / 100) : GradientBrush.GetColorAtOffset(newValue / 100);
+            UpdateColor(newValue);
+        }
+
+        private void UpdateColor(double value)
+        {
+            if (LinearGradient == null)
+                return;
+            var diff = Maximum - Minimum;
+            SelectedColor = Orientation == Orientation.Vertical ? LinearGradient.GetColorAtOffset(1 - value / diff) : LinearGradient.GetColorAtOffset(value / diff);
+        }
+
+        private void UpdateLinearGradient(Orientation orientation)
+        {
+            if (orientation == Orientation.Horizontal)
+            {
+                var newbrush = new LinearGradientBrush
+                {
+                    GradientStops = GradientStops,
+                    StartPoint = new Point(0, 0),
+                    EndPoint = new Point(1, 0)
+                };
+                LinearGradient = newbrush;
+            }
+            else
+            {
+                var newbrush = new LinearGradientBrush
+                {
+                    GradientStops = GradientStops,
+                    StartPoint = new Point(0, 0),
+                    EndPoint = new Point(0, 1)
+                };
+                LinearGradient = newbrush;
+            }
         }
     }
 }

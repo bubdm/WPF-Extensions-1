@@ -219,7 +219,8 @@ namespace WPF_Extension.Controls
                 TextChanged += OnTextChanged;
                 _popup = (Popup)GetTemplateChild("Popup");
                 _listBox = (ListBox)GetTemplateChild("ListBox");
-                _listBox.MouseUp += OnMouseClick;
+                if (_listBox != null)
+                    _listBox.MouseUp += OnMouseClick;
                 KeyUp += OnKeyUp;
             };
 

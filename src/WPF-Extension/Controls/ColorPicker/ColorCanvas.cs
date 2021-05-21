@@ -12,7 +12,8 @@ namespace WPF_Extension.Controls.ColorPicker
     public class ColorCanvas : Control
     {
         private readonly TranslateTransform _selectorTransform = new();
-        private Point _currentColorPos;
+        private Point _currentColorPos = new Point(0, 0);
+        private bool _raiseSelectedColorChanged = true;
 
         #region Dependency Properties
 
@@ -25,7 +26,6 @@ namespace WPF_Extension.Controls.ColorPicker
         // Using a DependencyProperty as the backing store for MainColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CanvasColorProperty =
             DependencyProperty.Register(nameof(CanvasColor), typeof(Color), typeof(ColorCanvas), new PropertyMetadata(Colors.White, OnCanvasColorChanged));
-        private bool _raiseSelectedColorChanged;
 
         public Color SelectedColor
         {
@@ -214,9 +214,9 @@ namespace WPF_Extension.Controls.ColorPicker
 
         private void UpdateSelectedColor(Point point)
         {
-            _raiseSelectedColorChanged = false;
+            //_raiseSelectedColorChanged = false;
             SelectedColor = GetColor(point);
-            _raiseSelectedColorChanged = true;
+            //_raiseSelectedColorChanged = true;
         }
 
         #endregion
@@ -233,7 +233,7 @@ namespace WPF_Extension.Controls.ColorPicker
 
         private void ColorCanvas_Loaded(object sender, RoutedEventArgs e)
         {
-            UpdateSelectorPosition(SelectedColor);
+            UpdateSelectedColor(new Point(ActualWidth / 2, ActualHeight / 2));
         }
 
         private void ColorCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

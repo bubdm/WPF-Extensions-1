@@ -17,34 +17,37 @@
         <GradientStop Color="#ff000000" Offset="1"/>
         <GradientStop Color="#00000000" Offset="0"/>
     </LinearGradientBrush>
-    
+
     <ControlTemplate TargetType="{x:Type local:ColorCanvas}" x:Key="ColorCanvasTemplate">
-        <Canvas>
-            <Rectangle x:Name="ColorShadingRectangle"
+        <Border>
+            <Canvas VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
+                <Rectangle x:Name="ColorShadingRectangle"
                        Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}"
                        Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualHeight}"
                        Fill="{TemplateBinding CanvasColor, Converter={conv:ColorToSolidBrushConverter}}" />
 
-            <Rectangle x:Name="PART_XGradient"
+                <Rectangle x:Name="PART_XGradient"
                        Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}"
                        Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualHeight}"
                        Fill="{StaticResource xGradient}" />
 
-            <Rectangle x:Name="PART_YGradient"
+                <Rectangle x:Name="PART_YGradient"
                        Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}"
                        Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualHeight}"
                        Fill="{StaticResource yGradient}" />
 
 
-            <ContentPresenter Content="{TemplateBinding Selector}"
+                <ContentPresenter Content="{TemplateBinding Selector}"
                                   x:Name="PART_ColorSelector"/>
 
-        </Canvas>
+            </Canvas>
+        </Border>
     </ControlTemplate>
 
 
     <Style TargetType="{x:Type local:ColorCanvas}">
         <Setter Property="Template" Value="{StaticResource ColorCanvasTemplate}"/>
     </Style>
-    
+
 </ResourceDictionary>

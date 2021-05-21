@@ -10,7 +10,7 @@
                    x:Name="Window">
     <Grid>
         <we:ColorPicker Margin="20"
-                        ShowRBGSliders="True"
+                        ShowRBGSliders="False"
                         UseAlphaChannel="False"/>
     </Grid>
 </we:AdvancedWindow>

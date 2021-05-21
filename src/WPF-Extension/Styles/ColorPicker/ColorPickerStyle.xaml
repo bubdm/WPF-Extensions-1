@@ -7,11 +7,13 @@
 
     <ControlTemplate TargetType="{x:Type local:ColorPicker}" x:Key="ColorPickerTemplate">
         <Grid Width="{TemplateBinding Width}"
-              Height="{TemplateBinding Height}">
-            
+              Height="{TemplateBinding Height}"
+              MinWidth="350"
+              MinHeight="180">
+
             <Grid.ColumnDefinitions>
                 <!--ColorCanvas-->
-                <ColumnDefinition Width="*"/> 
+                <ColumnDefinition Width="*"/>
                 <!--SpectrumSlider-->
                 <ColumnDefinition Width="Auto"/>
                 <!--AlphaSlider-->
@@ -24,19 +26,30 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <local:ColorCanvas x:Name="PART_ColorCanvas"
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <local:ColorCanvas x:Name="PART_ColorCanvas"
                                Width="Auto"
+                                   Grid.Column="1"
                                HorizontalAlignment="Stretch"
                                VerticalAlignment="Stretch"
                                CanvasColor="{Binding ElementName=PART_SpectrumSlider, Path=SelectedColor}">
-                <local:ColorCanvas.Selector>
-                    <Ellipse Width="15"
+                    <local:ColorCanvas.Selector>
+                        <Ellipse Width="15"
                          Height="15"
                          Stroke="White"
                          StrokeThickness="2"
                          Fill="{Binding ElementName=PART_ColorCanvas, Path=SelectedColor, Converter={conv:ColorToSolidBrushConverter}}"/>
-                </local:ColorCanvas.Selector>
-            </local:ColorCanvas>
+                    </local:ColorCanvas.Selector>
+                </local:ColorCanvas>
+                <ctrl:ColorPresenter Fill="{TemplateBinding SelectedColor, Converter={conv:ColorToSolidBrushConverter}}"
+                                     Grid.Column="0"
+                                     HorizontalAlignment="Stretch"/>
+
+            </Grid>
 
             <local:ColorSlider x:Name="PART_SpectrumSlider"
                                Grid.Column="1"
@@ -52,23 +65,17 @@
                                Maximum="255"
                                Visibility="{TemplateBinding UseAlphaChannel, Converter={conv:BoolToVisibilityConverter}}"/>
 
-            <Grid Grid.Row="1"
-                        Margin="0,15">
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <TextBox Text="#FFFFFFFF" 
-                         x:Name="PART_HexTextBox"
-                         Width="80"
-                         Margin="0,0,10,0"
-                         VerticalAlignment="Center"/>
-                <ctrl:ColorPresenter Fill="{TemplateBinding SelectedColor, Converter={conv:ColorToSolidBrushConverter}}"
-                                     Height="20"
-                                     Grid.Column="1"
-                                     HorizontalAlignment="Stretch"/>
-            </Grid>
+
+            <ctrl:AdvancedTextBox Text="#FFFFFFFF" 
+                                  Grid.Row="1"
+                                  Label="Hex Code:"
+                                  x:Name="PART_HexTextBox"
+                                  Width="80"
+                                  Margin="0,0,10,0"
+                                  HorizontalAlignment="Left"/>
+
+
 
             <StackPanel Grid.Row="2"
                         Visibility="{TemplateBinding ShowRBGSliders, Converter={conv:BoolToVisibilityConverter}}">
@@ -77,7 +84,7 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    
+
                     <ctrl:AdvancedTextBox Label="R"
                                           Text="{Binding ElementName=PART_RSlider, Path=Value}"
                                           Width="35"
@@ -156,10 +163,10 @@
 
                 </Grid>
             </StackPanel>
-            
+
         </Grid>
     </ControlTemplate>
-    
+
     <Style TargetType="{x:Type local:ColorPicker}">
         <Setter Property="Template" Value="{StaticResource ColorPickerTemplate}"/>
         <Setter Property="MinWidth" Value="250"/>

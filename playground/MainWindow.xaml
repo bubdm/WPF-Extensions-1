@@ -9,6 +9,8 @@
                    TitleBarBackground="Gold"
                    x:Name="Window">
     <Grid>
-        <we:ColorPicker/>
+        <we:AdvancedTextBox Label="Hallo:"
+                            Width="150">
+        </we:AdvancedTextBox>
     </Grid>
 </we:AdvancedWindow>

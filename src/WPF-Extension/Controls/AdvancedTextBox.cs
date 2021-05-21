@@ -89,15 +89,15 @@ namespace WPF_Extension.Controls
 
         #region Watermark
 
-        public string Watermark
+        public object Watermark
         {
-            get => (string)GetValue(WatermarkProperty);
+            get => GetValue(WatermarkProperty);
             set => SetValue(WatermarkProperty, value);
         }
 
         // Using a DependencyProperty as the backing store for Watermark.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty WatermarkProperty =
-            DependencyProperty.Register("Watermark", typeof(string), typeof(AdvancedTextBox), new PropertyMetadata(""));
+            DependencyProperty.Register("Watermark", typeof(object), typeof(AdvancedTextBox), new PropertyMetadata(""));
 
 
         public Brush WatermarkForegorund
@@ -222,11 +222,14 @@ namespace WPF_Extension.Controls
 
         private Popup _popup;
         private ListBox _listBox;
+        private bool _surpressWidthUpdate;
 
         static AdvancedTextBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(AdvancedTextBox), new FrameworkPropertyMetadata(typeof(AdvancedTextBox)));
         }
+
+      
 
         public AdvancedTextBox()
         {
@@ -239,7 +242,6 @@ namespace WPF_Extension.Controls
                     _listBox.MouseUp += OnMouseClick;
                 KeyUp += OnKeyUp;
             };
-
         }
 
         protected override void OnGotKeyboardFocus(KeyboardFocusChangedEventArgs e)

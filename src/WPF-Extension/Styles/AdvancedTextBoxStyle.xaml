@@ -6,29 +6,41 @@
         <Setter Property="FontSize" Value="16" />
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="BorderBrush" Value="Black" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type we:AdvancedTextBox}">
-                    <StackPanel>
-                        <DockPanel>
+                    <Grid Background="{TemplateBinding Background}">
+                    <DockPanel >
                             <!-- Label -->
                             <TextBlock x:Name="Label"
                                        Grid.Row="0"
+                                       MinWidth="18"
                                        Padding="{TemplateBinding LabelPadding}"
                                        Text="{TemplateBinding Label}"
                                        Foreground="{TemplateBinding LabelForegorund}"
                                        FontSize="{TemplateBinding LabelFontSize}"/>
-                            
+
+                            <!-- Assistant text -->
+                            <TextBlock x:Name="AssistentText"
+                                       Text="{TemplateBinding AssistentText}"
+                                       FontSize="{TemplateBinding AssistenTextFontSize}"
+                                       Foreground="{TemplateBinding AssistenTextForeground}"
+                                       Padding="{TemplateBinding AssistenTextPadding}"
+                                       TextWrapping="WrapWithOverflow"
+                                       DockPanel.Dock="Bottom"/>
+
+
                             <Border x:Name="Border"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="{TemplateBinding  CornerRadius}">
+                                    CornerRadius="{TemplateBinding  CornerRadius}"
+                                    HorizontalAlignment="Stretch">
 
-                                <Grid >
+                                <Grid Height="{TemplateBinding Height}">
                                     <!-- TextInput -->
                                     <ScrollViewer x:Name="PART_ContentHost" 
                                                   Focusable="True" 
@@ -38,7 +50,6 @@
                                                   VerticalScrollBarVisibility="Hidden"
                                                   Padding="{TemplateBinding Padding}"
                                                   Margin="0"
-                                                  Height="{TemplateBinding Height}"
                                                   FontSize="{TemplateBinding FontSize}"/>
                                     <!-- Popup -->
                                     <Popup x:Name="Popup"
@@ -48,33 +59,24 @@
                                     </Popup>
 
                                     <!-- Watermark -->
-                                    <TextBlock x:Name="Watermark"
-                                               Padding="1,0,0,0"
-                                               Text="{TemplateBinding Watermark}"
-                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                               Foreground="{TemplateBinding WatermarkForegorund}"
-                                               IsHitTestVisible="False"
-                                               Margin="{TemplateBinding Padding}"
-                                               Visibility="Collapsed"
-                                               FontSize="{TemplateBinding FontSize}"/>
+                                    <ContentPresenter x:Name="Watermark"
+                                                      Content="{TemplateBinding Watermark}"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                      TextBlock.Foreground="{TemplateBinding WatermarkForegorund}"
+                                                      IsHitTestVisible="False"
+                                                      Margin="{TemplateBinding Padding}"
+                                                      Visibility="Collapsed"
+                                                      TextBlock.FontSize="{TemplateBinding FontSize}"/>
                                 </Grid>
                             </Border>
-
                         </DockPanel>
-                        <!-- Assistant text -->
-                        <TextBlock x:Name="AssistentText"
-                                   Text="{TemplateBinding AssistentText}"
-                                   FontSize="{TemplateBinding AssistenTextFontSize}"
-                                   Foreground="{TemplateBinding AssistenTextForeground}"
-                                   Padding="{TemplateBinding AssistenTextPadding}"
-                                   TextWrapping="WrapWithOverflow"/>
-
-                    </StackPanel>
+                    </Grid>
+                    
 
                     <ControlTemplate.Triggers>
 
-                        <Trigger Property="LabelPosition" Value="Lef">
+                        <Trigger Property="LabelPosition" Value="Left">
                             <Setter Property="DockPanel.Dock" Value="Left" TargetName="Label"/>
                         </Trigger>
 
@@ -88,6 +90,10 @@
 
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Text}" Value="">
                             <Setter Property="Visibility" Value="Visible" TargetName="Watermark" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=AssistentText}" Value="">
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="AssistentText"/>
                         </DataTrigger>
 
                         <Trigger Property="IsMouseOver" Value="True" SourceName="Border">
@@ -116,7 +122,7 @@
                                    TargetName="Border"/>
                             <Setter Property="Foreground" Value="LightGray" TargetName="Label"/>
                             <Setter Property="Foreground" Value="LightGray" TargetName="PART_ContentHost"/>
-                            <Setter Property="Foreground" Value="LightGray" TargetName="Watermark"/>
+                            <Setter Property="TextBlock.Foreground" Value="LightGray" TargetName="Watermark"/>
                         </Trigger>
 
                         <Trigger Property="IsReadOnly" Value="True">

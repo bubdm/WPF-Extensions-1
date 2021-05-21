@@ -72,23 +72,25 @@
                                   Label="Hex Code:"
                                   x:Name="PART_HexTextBox"
                                   Width="80"
-                                  Margin="0,0,10,0"
+                                  Margin="5"
                                   HorizontalAlignment="Left"/>
 
 
 
             <StackPanel Grid.Row="2"
                         Visibility="{TemplateBinding ShowRBGSliders, Converter={conv:BoolToVisibilityConverter}}">
-                <Grid>
+                <Grid Margin="5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="55"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <ctrl:AdvancedTextBox Label="R"
                                           Text="{Binding ElementName=PART_RSlider, Path=Value}"
-                                          Width="35"
-                                          VerticalContentAlignment="Center"/>
+                                          LabelPadding="0,0,5,0"
+                                          LabelPosition="Left"
+                                          HorizontalContentAlignment="Center"
+                                          HorizontalAlignment="Stretch"/>
 
                     <local:ColorSlider x:Name="PART_RSlider"
                                        Minimum="0"
@@ -107,16 +109,18 @@
 
                 </Grid>
 
-                <Grid>
+                <Grid Margin="5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="55"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <ctrl:AdvancedTextBox Label="G"
                                           Text="{Binding ElementName=PART_GSlider, Path=Value}"
-                                          Width="35"
-                                          VerticalContentAlignment="Center"/>
+                                          LabelPosition="Left"
+                                          LabelPadding="0,0,5,0"
+                                          HorizontalContentAlignment="Center"
+                                          HorizontalAlignment="Stretch"/>
 
                     <local:ColorSlider x:Name="PART_GSlider"
                                        Minimum="0"
@@ -135,15 +139,18 @@
 
                 </Grid>
 
-                <Grid>
+                <Grid Margin="5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="55"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <ctrl:AdvancedTextBox Label="B"
                                           Text="{Binding ElementName=PART_BSlider, Path=Value}"
-                                          Width="35"
+                                          HorizontalContentAlignment="Center"
+                                          HorizontalAlignment="Stretch"
+                                          LabelPosition="Left"
+                                          LabelPadding="0,0,5,0"
                                           VerticalContentAlignment="Center"/>
 
                     <local:ColorSlider x:Name="PART_BSlider"

@@ -10,7 +10,6 @@
                    x:Name="Window">
     <Grid>
         <we:ColorPicker Margin="20"
-                        SelectedColorChanged="ColorPicker_SelectedColorChanged"
                         ShowRBGSliders="True"
                         UseAlphaChannel="False"/>
     </Grid>

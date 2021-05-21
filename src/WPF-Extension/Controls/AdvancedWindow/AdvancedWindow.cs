@@ -36,7 +36,7 @@ namespace WPF_Extension.Controls
 
         // Using a DependencyProperty as the backing store for ResizeBoarderThickness.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ResizeBoarderThicknessProperty =
-            DependencyProperty.Register(nameof(ResizeBoarderThickness), typeof(Thickness), typeof(AdvancedWindow), new PropertyMetadata(WindowChromeBehavior.ResizeBorderThicknessProperty.DefaultMetadata.DefaultValue));
+            DependencyProperty.Register(nameof(ResizeBoarderThickness), typeof(Thickness), typeof(AdvancedWindow), new PropertyMetadata(new Thickness(5)));
 
 
         public bool OverlapTaskbarOnMaximize
@@ -84,7 +84,7 @@ namespace WPF_Extension.Controls
 
         // Using a DependencyProperty as the backing store for WindowGlow.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty WindowGlowProperty =
-            DependencyProperty.Register("WindowGlow", typeof(Brush), typeof(AdvancedWindow), new PropertyMetadata());
+            DependencyProperty.Register("WindowGlow", typeof(Brush), typeof(AdvancedWindow), new PropertyMetadata(new SolidColorBrush(Colors.Gray)));
 
 
 
@@ -97,7 +97,7 @@ namespace WPF_Extension.Controls
 
         // Using a DependencyProperty as the backing store for NonActiveWindowGlow.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty NonActiveWindowGlowProperty =
-            DependencyProperty.Register("NonActiveWindowGlow", typeof(Brush), typeof(AdvancedWindow), new PropertyMetadata());
+            DependencyProperty.Register("NonActiveWindowGlow", typeof(Brush), typeof(AdvancedWindow), new PropertyMetadata(new SolidColorBrush(Colors.Gray)));
 
 
 
@@ -172,7 +172,7 @@ namespace WPF_Extension.Controls
             BorderThicknessProperty.OverrideMetadata(typeof(AdvancedWindow), new FrameworkPropertyMetadata(new Thickness(1)));
             WindowStyleProperty.OverrideMetadata(typeof(AdvancedWindow), new FrameworkPropertyMetadata(WindowStyle.None));
             AllowsTransparencyProperty.OverrideMetadata(typeof(AdvancedWindow), new FrameworkPropertyMetadata(false));
-            BackgroundProperty.OverrideMetadata(typeof(AdvancedWindow), new FrameworkPropertyMetadata(new SolidColorBrush(System.Windows.Media.Colors.White)));
+            BackgroundProperty.OverrideMetadata(typeof(AdvancedWindow), new FrameworkPropertyMetadata(new SolidColorBrush(Colors.White)));
         }
 
         public AdvancedWindow()
